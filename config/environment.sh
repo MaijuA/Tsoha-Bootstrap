@@ -3,6 +3,6 @@
 # korvaa tämä omalla käyttäjätunnuksellasi
 USERNAME="airosmaa"
 # korvaa tämä haluamallasi kansion nimellä
-PROJECT_FOLDER="tyoaiheet"
+PROJECT_FOLDER="muistilista"
 # sovelluksesi tulee sijaitsemaan osoitteessa USERNAME.users.cs.helsinki.fi/PROJECT_FOLDER
 
