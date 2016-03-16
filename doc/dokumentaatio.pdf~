@@ -26,28 +26,28 @@ Sovelluksella on yksi käyttäjäryhmä eli muistilistan pääkäyttäjät, jotk
 Kirjautuminen:
 Käyttäjä kirjautuu sovellukseen omalla käyttäjätunnuksella ja salasanalla
 
-Askareen lisäys
+Askareen lisäys:
 Käyttäjä lisää itselleen askareen nimen ja halutessaan kuvauksen ja priorisoinnin
 
-Askareen muokkaus
+Askareen muokkaus:
 Käyttäjä muokkaa askareensa nimeä, kuvausta tai priorisointia tai lisää puuttuvan kuvauksen tai priorisoinnin
 
-Askareen poisto
+Askareen poisto:
 Käyttäjä poistaa askareensa 
 
-Luokkien lisäys
+Luokkien lisäys:
 Käyttäjä lisää luokkia askareita varten
 
-Luokkien poisto
+Luokkien poisto:
 Käyttäjä poistaa luokan (edellyttääkö että luokka on tyhjä vai poistuvatko luokan sisäiset askareet samalla)
 
-Askareiden luokittelu
+Askareiden luokittelu:
 Käyttäjä lisää askareen yhteen tai useampaan luokkaan
 
-Luokille aliluokkia
+Luokille aliluokkia:
 Käyttäjä lisää olemassa olevalle luokalle aliluokan
 
-Luokka aliluokaksi
+Luokka aliluokaksi:
 Käyttäjä muokkaa olemassa olevan luokan toisen luokan aliluokaksi
 
 
