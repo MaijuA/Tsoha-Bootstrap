@@ -3,7 +3,7 @@
 
 ## Johdanto
 
-Muistilista-tietokantasovelluksen käyttäjä voi tallentaa askareitaan muistiin tärkeysjärjestyksessä. Käyttäjä voi myös jakaa askareita eri luokkiin ja luokilla voi olla aliluokkia.
+Muistilista-tietokantasovelluksen käyttäjä voi tallentaa askareitaan muistiin tärkeysjärjestyksessä. Käyttäjä voi myös jakaa askareita eri luokkiin tai niiden aliluokkiin.
 
 Tietokannalla voi olla useita käyttäjiä, jotka voivat kukin kirjautua sovellukseen omalla käyttäjätunnuksellaan ja salasanallaan. Jokaisella käyttäjällä on omat askareensa, tärkeysjärjestyksensa ja luokkansa. 
 
