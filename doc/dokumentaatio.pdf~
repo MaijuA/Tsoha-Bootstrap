@@ -19,7 +19,7 @@ Tietokantasovellus pystytetään laitoksen users-palvelimelle, jossa pyöritetä
 
 ###Käyttäjäryhmät
 
-Sovelluksella on yksi käyttäjäryhmä eli muistilistan pääkäyttäjät
+Sovelluksella on yksi käyttäjäryhmä eli muistilistan pääkäyttäjät, jotka hallinnoivat omia askareitaan sovelluksessa.
 
 ###Käyttötapauskuvaukset
 
