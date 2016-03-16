@@ -3,11 +3,11 @@
 
 ## Johdanto
 
-Muistilista-tietokantasovelluksen käyttäjä voi tallentaa askareitaan muistiin to-do-lista tyyppisesti. Askareita voidaan lisätä ja priorisoida, jolloin ne näkyvät loogisesti tärkeysjärjestyksessä. Askareita voidaan myös jakaa eri luokkiin ja luokilla voi olla aliluokkia.
+Muistilista-tietokantasovelluksen käyttäjä voi tallentaa askareitaan muistiin tärkeysjärjestyksessä. Käyttäjä voi myös jakaa askareita eri luokkiin ja luokilla voi olla aliluokkia.
 
-Tietokannalla on useita käyttäjiä, jotka voivat kukin kirjautua omalla käyttäjätunnuksella ja salasanalla. Jokaisella käyttäjällä on omat askareensa, tärkeysjärjestyksensa ja luokkansa. 
+Tietokannalla voi olla useita käyttäjiä, jotka voivat kukin kirjautua sovellukseen omalla käyttäjätunnuksellaan ja salasanallaan. Jokaisella käyttäjällä on omat askareensa, tärkeysjärjestyksensa ja luokkansa. 
 
-Tietokantasovellus pystytetään laitoksen users-palvelimelle, jossa pyöritetään PHP:lla toteutettua sovellusta käyttäen PostgreSQL-tietokantapalvelinta.
+Tietokantasovellus toteutetaan PHP:lla ja pystytetään laitoksen users-palvelimelle, jossa sovellusta pyöritetään käyttäen PostgreSQL-tietokantapalvelinta.
 
 -Tomcat/Apache?
 
