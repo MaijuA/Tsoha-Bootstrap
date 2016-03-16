@@ -3,17 +3,14 @@
 
 ## Johdanto
 
-Muistilista-tietokantasovelluksen käyttäjä voi tallentaa askareitaan muistiin tärkeysjärjestyksessä. Käyttäjä voi myös jakaa askareita eri luokkiin tai niiden aliluokkiin.
+Muistilista-sovelluksen on tarkoitus auttaa käyttäjäänsä hallinnoimaan askareitaan ja täten myös ajankäyttöään. Käyttäjä voi tallentaa suunnitellut askareensa sovellukseen ja asettaa ne tärkeysjärjestykseen. Askareet on myös mahdollista jakaa eri luokkiin. Käyttäjä voi itse lisätä ja poistaa luokkia ja luokilla voi olla aliluokkia.
 
-Tietokannalla voi olla useita käyttäjiä, jotka voivat kukin kirjautua sovellukseen omalla käyttäjätunnuksellaan ja salasanallaan. Jokaisella käyttäjällä on omat askareensa, tärkeysjärjestyksensa ja luokkansa. 
+Sovelluksella voi olla useita käyttäjiä, jotka kukin kirjautuvat sovellukseen omalla käyttäjätunnuksella ja salasanalla. Jokaisella käyttäjällä on omat askareensa, luokkansa ja tärkeysjärjestyksensä. 
 
-Tietokantasovellus toteutetaan PHP:lla ja pystytetään laitoksen users-palvelimelle, jossa sovellusta pyöritetään käyttäen PostgreSQL-tietokantapalvelinta.
+Tietokantasovellus toteutetaan PHP:lla ja pystytetään laitoksen users-palvelimelle Apache-palvelimen alle. Sovellusta pyöritetään käyttäen PostgreSQL-tietokantapalvelinta.
 
--Tomcat/Apache?
+Koska sovellus on tarkoitus totetuttaa PHP:llä, käyttäjän selaimen ei tarvitse tukea esimerkiksi Javascriptiä. Sovellus tehdään PostgreSQL-palvelimelle sopivaksi, jolloin sen ei pitäisi toimia muilla palvelimilla.
 
--Täytyykö käyttäjän selaimen tukea jotain tiettyä ohjelmointikieltä (esim. javascript?).
-
--Edellyttääkö ohjelmisto jonkun tietyn tietokannan käyttöä vai voiko sitä vaihtaa helposti? Useimmat työt toimivat vain yhdellä kannalla.
 
 ##Yleiskuva järjestelmästä
 

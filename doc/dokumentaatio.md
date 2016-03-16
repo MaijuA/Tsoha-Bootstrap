@@ -7,9 +7,7 @@ Muistilista-sovelluksen on tarkoitus auttaa käyttäjäänsä hallinnoimaan aska
 
 Sovelluksella voi olla useita käyttäjiä, jotka kukin kirjautuvat sovellukseen omalla käyttäjätunnuksella ja salasanalla. Jokaisella käyttäjällä on omat askareensa, luokkansa ja tärkeysjärjestyksensä. 
 
-Tietokantasovellus toteutetaan PHP:lla ja pystytetään laitoksen users-palvelimelle Apache-palvelimen alle. Sovellusta pyöritetään käyttäen PostgreSQL-tietokantapalvelinta.
-
-Koska sovellus on tarkoitus totetuttaa PHP:llä, käyttäjän selaimen ei tarvitse tukea esimerkiksi Javascriptiä. Sovellus tehdään PostgreSQL-palvelimelle sopivaksi, jolloin sen ei pitäisi toimia muilla palvelimilla.
+Tietokantasovellus toteutetaan PHP:lla ja pystytetään laitoksen users-palvelimelle Apache-palvelimen alle. Sovellusta pyöritetään käyttäen PostgreSQL-tietokantapalvelinta. Koska sovellus on tarkoitus totetuttaa PHP:llä, käyttäjän selaimen ei tarvitse tukea esimerkiksi Javascriptiä. Sovellus tehdään PostgreSQL-palvelimelle sopivaksi, jolloin sen ei pitäisi toimia muilla palvelimilla.
 
 
 ##Yleiskuva järjestelmästä
