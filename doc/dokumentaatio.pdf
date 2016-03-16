@@ -13,6 +13,28 @@ Tietokantasovellus pystytetään laitoksen users-palvelimelle, jossa pyöritetä
 -Täytyykö käyttäjän selaimen tukea jotain tiettyä ohjelmointikieltä (esim. javascript?).
 -Edellyttääkö ohjelmisto jonkun tietyn tietokannan käyttöä vai voiko sitä vaihtaa helposti? Useimmat työt toimivat vain yhdellä kannalla.
 
+##Yleiskuva järjestelmästä
+
+###Käyttötapauskaavio
+
+###Käyttötapauskuvaukset
+
+Kirjautuminen
+Askareen lisäys
+Askareen muokkaus
+Askareen poisto
+Askareen priorisointi lisäyksessä
+Askareen priorisointi lisäyksen jälkeen
+Luokkien lisäys
+Luokkien poisto
+Askareiden luokittelu
+Luokille aliluokkia
+Luokka aliluokaksi
+Askareelle useampi kuin yksi luokka
+
+###Käyttäjäryhmät
+
+
 
 
 
