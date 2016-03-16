@@ -18,6 +18,20 @@ Tietokantasovellus pystytetään laitoksen users-palvelimelle, jossa pyöritetä
 ###Käyttötapauskaavio
 
 ###Käyttötapauskuvaukset
+
+Kirjautuminen
+Askareen lisäys
+Askareen muokkaus
+Askareen poisto
+Askareen priorisointi lisäyksessä
+Askareen priorisointi lisäyksen jälkeen
+Luokkien lisäys
+Luokkien poisto
+Askareiden luokittelu
+Luokille aliluokkia
+Luokka aliluokaksi
+Askareelle useampi kuin yksi luokka
+
 ###Käyttäjäryhmät
 
 
