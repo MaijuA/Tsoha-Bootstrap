@@ -3,7 +3,7 @@
 Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](http://airosmaa.users.cs.helsinki.fi/muistilista)
-* [Linkki dokumentaatiooni](https://github.com/MaijuA/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.md)
+* [Linkki dokumentaatiooni](https://github.com/MaijuA/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
 
