@@ -12,15 +12,19 @@
       View::make('helloworld.html');
     }
     
-    public static function etusivu(){
-    View::make('suunnitelmat/etusivu.html');
+    public static function muistilista(){
+    View::make('suunnitelmat/muistilista.html');
   }
 
   public static function muokkaa(){
     View::make('suunnitelmat/muokkaa.html');
   }
 
-  public static function login(){
+  public static function kirjaudu(){
     View::make('suunnitelmat/kirjautuminen.html');
   }
+  public static function kuvaus(){
+    View::make('suunnitelmat/kuvaus.html');
+  }
+  
   }

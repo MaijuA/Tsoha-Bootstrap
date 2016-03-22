@@ -7,13 +7,17 @@ HelloWorldController::index();
 $routes->get('/hiekkalaatikko', function() {
 HelloWorldController::sandbox();
 });
-$routes->get('/game', function() {
-HelloWorldController::etusivu();
+$routes->get('/muistilista', function() {
+HelloWorldController::muistilista();
 });
-$routes->get('/game/1', function() {
+$routes->get('/muokkaa', function() {
 HelloWorldController::muokkaa();
 });
 
-$routes->get('/login', function() {
-HelloWorldController::login();
+$routes->get('/kirjautuminen', function() {
+HelloWorldController::kirjaudu();
+});
+
+$routes->get('/tehtävä', function() {
+HelloWorldController::tehtävä();
 });
