@@ -7,5 +7,5 @@ Yleisiä linkkejä:
 
 ## Muistilista (parityö)
 
-Laita tähän aihekuvaus tai [linkki aihekuvaukseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html) 
+[Linkki aihekuvaukseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html) 
 
