@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>Tehtävä</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
+
         {% extends "base.html" %}
         {% block content %}
         <h1>Maksa laskut</h1>
@@ -22,9 +10,9 @@ and open the template in the editor.
 
         <!-- Tiedot tulee listana tähän -->
         <ul>
-            <li><strong>Milloin tehdään:</strong> 1.4.2016</li>
-            <li><strong>Deadline:</strong> 5.5.2016</li>
             <li><strong>Status:</strong> <label class="label label-danger">kesken</label></li>
+            <li><strong>Deadline:</strong> 5.5.2016</li>
+            
             <li><strong>Lisätty:</strong> 15.3.2016</li>
         </ul>
         <!-- Kuvaus tulee tähän -->
@@ -32,5 +20,4 @@ and open the template in the editor.
             Sähkölasku, vuokra
         </p>
         {% endblock %}
-    </body>
-</html>
+    

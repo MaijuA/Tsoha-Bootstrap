@@ -18,6 +18,6 @@ $routes->get('/kirjautuminen', function() {
 HelloWorldController::kirjaudu();
 });
 
-$routes->get('/tehtävä', function() {
-HelloWorldController::tehtävä();
+$routes->get('/kuvaus', function() {
+HelloWorldController::kuvaus();
 });
