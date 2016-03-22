@@ -14,7 +14,8 @@ and open the template in the editor.
 
 
     <body>
-        
+        {% extends "base.html" %}
+        {% block content %}
         <h1>Muistilista</h1>
 
         <p>
@@ -37,8 +38,8 @@ and open the template in the editor.
                 <!-- Listataan tehtävät tähän -->
                 <tr>
                     <td><a href="#">Maksa laskut</a></td>
-                    
-                    
+
+
                     <td>1.4.2016</td>
                     <td>1.4.2016</td>
                     <td><label class="label label-danger">kesken</label></td>
@@ -47,6 +48,6 @@ and open the template in the editor.
                 </tr>
             </tbody>
         </table>
-        
+        {% endblock %}
     </body>
 </html>
