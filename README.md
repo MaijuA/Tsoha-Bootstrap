@@ -6,10 +6,10 @@ Yleisiä linkkejä:
 * [Linkki dokumentaatiooni](https://github.com/MaijuA/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 Käyttöliittymä:
-* [Kirjautumissivu](file:///home/ad/fshome1/u1/a/airosmaa/Linux/Tsoha-Bootstrap/app/views/suunnitelmat/kirjautuminen.html)
-* [Muistilista](file:///home/ad/fshome1/u1/a/airosmaa/Linux/Tsoha-Bootstrap/app/views/suunnitelmat/etusivu.html)
-* [Tehtävän kuvaus](file:///home/ad/fshome1/u1/a/airosmaa/Linux/Tsoha-Bootstrap/app/views/suunnitelmat/kuvaus.html)
-* [Muokkaa](file:///home/ad/fshome1/u1/a/airosmaa/Linux/Tsoha-Bootstrap/app/views/suunnitelmat/Muokkaa.html)
+* [Kirjautumissivu](https://github.com/MaijuA/Tsoha-Bootstrap/blob/master/app/views/suunnitelmat/Muokkaa.html)
+* [Muistilista](https://github.com/MaijuA/Tsoha-Bootstrap/blob/master/app/views/suunnitelmat/muistilista.html)
+* [Tehtävän kuvaus](https://github.com/MaijuA/Tsoha-Bootstrap/blob/master/app/views/suunnitelmat/kuvaus.html)
+* [Muokkaa](https://github.com/MaijuA/Tsoha-Bootstrap/blob/master/app/views/suunnitelmat/Muokkaa.html)
 
 ## Muistilista (parityö)
 
