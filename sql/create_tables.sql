@@ -14,6 +14,6 @@ CREATE TABLE Tehtävä(
   kuvaus varchar(400),
   milloin DATE,
   deadline DATE,
-  lisätty DATE,
-  
+  lisätty DATE
+  );
   
