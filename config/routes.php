@@ -17,6 +17,9 @@ HelloWorldController::muokkaa();
 $routes->get('/kirjautuminen', function() {
 HelloWorldController::kirjaudu();
 });
+$routes->get('/kuvaus/', function() {
+HelloWorldController::kuvaus();
+});
 
 $routes->get('/kuvaus/:id', function() {
 HelloWorldController::kuvaus();
