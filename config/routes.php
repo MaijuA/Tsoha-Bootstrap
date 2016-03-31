@@ -18,6 +18,19 @@ $routes->get('/kirjautuminen', function() {
 HelloWorldController::kirjaudu();
 });
 
-$routes->get('/kuvaus', function() {
+$routes->get('/kuvaus/:id', function() {
 HelloWorldController::kuvaus();
 });
+
+$routes->get('/tehtävä', function(){
+  TehtäväController::index();
+});
+
+$routes->post('/suunnitelmat', function(){
+  TehtäväController::store();
+});
+
+$routes->get('/suunnitelmat/new', function(){
+  TehtäväController::create();
+});
+

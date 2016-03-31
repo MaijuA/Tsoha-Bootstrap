@@ -1,4 +1,4 @@
-         {% extends "base.html" %}
+        {% extends "base.html" %}
         {% block content %}
         <h1>Muistilista</h1>
 
@@ -20,7 +20,7 @@
             </thead>
 
             <tbody>
-                <!-- Listataan tehtävät tähän -->
+              {% for game in tehtävät %}  
                 <tr>
                     <td><a href="http://airosmaa.users.cs.helsinki.fi/muistilista/kuvaus">Maksa laskut</a></td>
                     <td>1</td>
@@ -32,6 +32,7 @@
                     
                     <th><a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaa">Muokkaa</a></th>
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
         {% endblock %}
