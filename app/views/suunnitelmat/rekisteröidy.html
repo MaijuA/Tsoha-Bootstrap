@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+        {% block content %}
+        <h1>Rekisteröidy Muistilista-sovelluksen käyttäjäksi</h1>
+        
+
+        <!-- Kaikki lomakkeen elementit form-tagin sisään -->
+        <form>
+            <!-- Tekstikenttä käyttäjätunnukselle -->
+            <div class="form-group">
+                <label>Etunimi</label>
+                <input class="form-control" type="text">
+            </div>
+            <div class="form-group">
+                <label>Sukunimi</label>
+                <input class="form-control" type="text">
+            </div>
+            
+            <div class="form-group">
+                <label>Sähköpostiosoite</label>
+                <input class="form-control" type="text">
+            </div>
+            <div class="form-group">
+                <label>Käyttäjätunnus</label>
+                <input class="form-control" type="text">
+            </div>
+
+            <div class="form-group">
+                <label>Salasana</label>
+                <input class="form-control" type="password">
+            </div>
+            <div class="form-group">
+                <label>Vahvista salasana</label>
+                <input class="form-control" type="password">
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Rekisteröidy</button>
+        </form>
+        {% endblock %}
