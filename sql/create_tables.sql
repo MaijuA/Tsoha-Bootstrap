@@ -24,5 +24,5 @@ CREATE TABLE Luokka(
   käyttäjä_id INTEGER REFERENCES Käyttäjä(id), -- Viiteavain Player-tauluun
   nimi varchar(50) NOT NULL,
   
-  yläluokka_id INTEGER REFERENCES Luokka(id)
+  
   );
