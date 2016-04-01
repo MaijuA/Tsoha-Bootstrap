@@ -52,7 +52,7 @@ class Käyttäjä extends BaseModel {
                 'salasana' => $row['salasana']
             ));
 
-            return $käyttäjä;
+            return $käyttäjät;
         }
 
         return null;

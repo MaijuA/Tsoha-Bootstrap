@@ -8,12 +8,14 @@
 
 class Tehtävä extends BaseModel {
 
-    public $id, $käyttäjä_id, $luokka_id, $nimi, $prioriteetti, $status, $kuvaus;
+    public $id, $käyttäjä_id, $nimi, $prioriteetti, $status, $kuvaus;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
     }
 
+    
+    
     public static function all() {
 
         $query = DB::connection()->prepare('SELECT * FROM Tehtävä');
@@ -29,7 +31,6 @@ class Tehtävä extends BaseModel {
             $tehtävät[] = new Tehtävä(array(
                 'id' => $row['id'],
                 'käyttäjä_id' => $row['käyttäjä_id'],
-                'luokka_id' => $row['luokka_id'],
                 'nimi' => $row['nimi'],
                 'prioriteetti' => $row['prioriteetti'],
                 'status' => $row['status'],
@@ -49,7 +50,7 @@ class Tehtävä extends BaseModel {
             $tehtävä = new Tehtävä(array(
                 'id' => $row['id'],
                 'käyttäjä_id' => $row['käyttäjä_id'],
-                'luokka_id' => $row['luokka_id'],
+                
                 'nimi' => $row['nimi'],
                 'prioriteetti' => $row['prioriteetti'],
                 'status' => $row['status'],

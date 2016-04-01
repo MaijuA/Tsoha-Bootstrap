@@ -12,12 +12,13 @@ View::make('suunnitelmat/kirjautuminen.html');
 
 public static function sandbox() {
 // Testaa koodiasi täällä
+
 View::make('helloworld.html');
-$lasku = Tehtävä::find(1);
+$t1 = Tehtävä::find(1);
 $tehtävät = Tehtävä::all();
 // Kint-luokan dump-metodi tulostaa muuttujan arvon
 Kint::dump($tehtävät);
-Kint::dump($lasku);
+Kint::dump($t1);
 }
 
 public static function muistilista() {
