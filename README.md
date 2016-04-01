@@ -9,12 +9,14 @@ Käyttöliittymä:
 * [Kirjaudu sisään](http://airosmaa.users.cs.helsinki.fi/muistilista/kirjautuminen)
 * [Rekisteröidy](http://airosmaa.users.cs.helsinki.fi/muistilista/rekisteroidy)
 * [Muistilista](http://airosmaa.users.cs.helsinki.fi/muistilista/muistilista)
-* [Tehtävän kuvaus](http://airosmaa.users.cs.helsinki.fi/muistilista/kuvaus)
-* [Muokkaa tehtävää](http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaa?)
 * [Lisää tehtävä](http://airosmaa.users.cs.helsinki.fi/muistilista/lisaatehtava)
-* [Luokan kuvaus](http://airosmaa.users.cs.helsinki.fi/muistilista/luokankuvaus)
-* [Muokkaa luokkaa](http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaaluokkaa)
+* [Muokkaa tehtävää](http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaa?)
+* [Tehtävän kuvaus](http://airosmaa.users.cs.helsinki.fi/muistilista/kuvaus)
 * [Lisää luokka](http://airosmaa.users.cs.helsinki.fi/muistilista/lisaaluokka)
+* [Muokkaa luokkaa](http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaaluokkaa)
+* [Luokan kuvaus](http://airosmaa.users.cs.helsinki.fi/muistilista/luokankuvaus)
+
+
 
 ## Muistilista (parityö)
 
