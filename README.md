@@ -6,11 +6,15 @@ Yleisiä linkkejä:
 * [Linkki dokumentaatiooni](https://github.com/MaijuA/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 Käyttöliittymä:
-* [Etusivu](http://airosmaa.users.cs.helsinki.fi/muistilista/kirjautuminen)
-* [Muistilista](http://airosmaa.users.cs.helsinki.fi/muistilista/muistilista)
-* [Muokkaus](http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaa?)
-* [Kuvaus](http://airosmaa.users.cs.helsinki.fi/muistilista/kuvaus)
+* [Kirjaudu sisään](http://airosmaa.users.cs.helsinki.fi/muistilista/kirjautuminen)
 * [Rekisteröidy](http://airosmaa.users.cs.helsinki.fi/muistilista/rekisteroidy)
+* [Muistilista](http://airosmaa.users.cs.helsinki.fi/muistilista/muistilista)
+* [Tehtävän kuvaus](http://airosmaa.users.cs.helsinki.fi/muistilista/kuvaus)
+* [Muokkaa tehtävää](http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaa?)
+* [Lisää tehtävä](http://airosmaa.users.cs.helsinki.fi/muistilista/lisaatehtava)
+* [Luokan kuvaus](http://airosmaa.users.cs.helsinki.fi/muistilista/luokankuvaus)
+* [Muokkaa luokkaa](http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaaluokkaa)
+* [Lisää luokka](http://airosmaa.users.cs.helsinki.fi/muistilista/lisaaluokka)
 
 ## Muistilista (parityö)
 

@@ -29,6 +29,22 @@ $routes->get('/rekisteroidy', function(){
   HelloWorldController::rekisteroidy();
 });
 
+$routes->get('/lisaatehtava', function(){
+  HelloWorldController::lisaaTehtava();
+});
+
+$routes->get('/luokankuvaus', function(){
+  HelloWorldController::luokanKuvaus();
+});
+
+$routes->get('/muokkaaluokkaa', function(){
+  HelloWorldController::muokkaaLuokkaa();
+});
+
+$routes->get('/lisaaluokka', function(){
+  HelloWorldController::lisaaLuokka();
+});
+
 $routes->get('/tehtävä', function(){
   TehtäväController::index();
 });

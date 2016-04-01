@@ -1,25 +1,19 @@
-
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Muokkaa tehtävää</h2>
+<h2>Lisää tehtävä</h2>
 
 
 
 <form>
-    <div class="checkbox">
-        <label>
-            <input type="checkbox">
-            Tehty
-        </label>
-    </div>
+    
     <div class="form-group">
         <label>Nimi</label>
         <input class="form-control" value="" type="text">
     </div>
 
     <div><label>Prioriteetti</label></div>
-   
+    
     <div class="radio">
         <label>
             <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
@@ -72,4 +66,3 @@
     </div>
 </form>
 {% endblock %}
-

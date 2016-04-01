@@ -40,5 +40,21 @@ public static function rekisteroidy() {
 View::make('suunnitelmat/rekisteroidy.html');
 }
 
+public static function lisaaTehtava() {
+View::make('suunnitelmat/lisaatehtava.html');
+}
+
+public static function luokanKuvaus() {
+View::make('suunnitelmat/luokankuvaus.html');
+}
+
+public static function muokkaaLuokkaa() {
+View::make('suunnitelmat/muokkaaluokkaa.html');
+}
+
+public static function lisaaLuokka() {
+View::make('suunnitelmat/lisaaluokka.html');
+}
+
 
 }
