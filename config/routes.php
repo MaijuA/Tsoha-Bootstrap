@@ -25,6 +25,10 @@ $routes->get('/kuvaus/:id', function() {
 HelloWorldController::kuvaus();
 });
 
+$routes->get('/rekisteroidy', function(){
+  HelloWorldController::rekisteroidy();
+});
+
 $routes->get('/tehtävä', function(){
   TehtäväController::index();
 });
@@ -36,4 +40,7 @@ $routes->post('/suunnitelmat', function(){
 $routes->get('/suunnitelmat/new', function(){
   TehtäväController::create();
 });
+
+
+
 

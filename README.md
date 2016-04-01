@@ -10,7 +10,7 @@ Käyttöliittymä:
 * [Muistilista](http://airosmaa.users.cs.helsinki.fi/muistilista/muistilista)
 * [Muokkaus](http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaa?)
 * [Kuvaus](http://airosmaa.users.cs.helsinki.fi/muistilista/kuvaus)
-
+* [Rekisteröidy](http://airosmaa.users.cs.helsinki.fi/muistilista/rekisteroidy)
 
 ## Muistilista (parityö)
 

@@ -35,5 +35,9 @@ public static function kuvaus() {
 View::make('suunnitelmat/kuvaus.html');
 }
 
+public static function rekisteroidy() {
+View::make('suunnitelmat/rekisteroidy.html');
+}
+
 
 }
