@@ -6,7 +6,7 @@ Yleisiä linkkejä:
 * [Linkki dokumentaatiooni](https://github.com/MaijuA/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 Käyttöliittymä:
-* [Kirjautumissivu](http://airosmaa.users.cs.helsinki.fi/muistilista/kirjautuminen)
+* [Etusivu](http://airosmaa.users.cs.helsinki.fi/muistilista/kirjautuminen)
 * [Muistilista](http://airosmaa.users.cs.helsinki.fi/muistilista/muistilista)
 * [Muokkaus](http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaa?)
 * [Kuvaus](http://airosmaa.users.cs.helsinki.fi/muistilista/kuvaus)
