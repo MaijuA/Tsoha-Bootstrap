@@ -45,6 +45,10 @@ $routes->get('/lisaaluokka', function(){
   HelloWorldController::lisaaLuokka();
 });
 
+$routes->get('/luokat', function(){
+  HelloWorldController::luokat();
+});
+
 $routes->get('/tehtävä', function(){
   TehtäväController::index();
 });

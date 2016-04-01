@@ -1,35 +1,33 @@
-        {% extends "base.html" %}
+ {% extends "base.html" %}
         {% block content %}
-        <h1>Tehtävät</h1> 
+        <h1>Luokat</h1> 
         <p>
-        <a href="http://airosmaa.users.cs.helsinki.fi/muistilista/lisaatehtava" class="btn btn-success" role="button">Lisää tehtävä</a>
+       
         <a href="http://airosmaa.users.cs.helsinki.fi/muistilista/lisaaluokka" class="btn btn-primary" role="button">Lisää luokka</a>
         </p>
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th>Tehtävä</th>
-                    <th>Prioriteetti</th>
-                    <th>Status</th>
-                    
                     <th>Luokka</th>
+                    <th>Kuvaus</th>
+                    
                     
                     <th></th>
                 </tr>
             </thead>
 
             <tbody>
-              {% for tehtävä in tehtävät %}  
+              {% for luokka in luokat %}  
                 <tr>
-                    <td><a href="http://airosmaa.users.cs.helsinki.fi/muistilista/kuvaus"></a>Tehtävä</td>
+                    <td><a href="http://airosmaa.users.cs.helsinki.fi/muistilista/luokankuvaus"></a>Luokka</td>
                     <td>1</td>
                     <td><label class="label label-danger">kesken</label></td>   
 
                     
                     
-                    <td><a href="http://airosmaa.users.cs.helsinki.fi/muistilista/luokankuvaus"></a>Luokka</td>
                     
-                    <th><a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaa">Muokkaa</a></th>
+                    
+                    <th><a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaaluokkaa">Muokkaa</a></th>
                 </tr>
                 {% endfor %}
             </tbody>

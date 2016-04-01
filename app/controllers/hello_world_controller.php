@@ -55,6 +55,9 @@ View::make('suunnitelmat/muokkaaluokkaa.html');
 public static function lisaaLuokka() {
 View::make('suunnitelmat/lisaaluokka.html');
 }
+public static function luokat() {
+View::make('suunnitelmat/luokat.html');
+}
 
 
 }
