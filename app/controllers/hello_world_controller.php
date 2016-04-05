@@ -13,12 +13,12 @@ View::make('suunnitelmat/kirjautuminen.html');
 public static function sandbox() {
 // Testaa koodiasi täällä
 
-View::make('helloworld.html');
-$t1 = Tehtävä::find(1);
+
+$lasku = Tehtävä::find(1);
 $tehtävät = Tehtävä::all();
 // Kint-luokan dump-metodi tulostaa muuttujan arvon
 Kint::dump($tehtävät);
-Kint::dump($t1);
+Kint::dump($lasku);
 }
 
 public static function muistilista() {
@@ -41,10 +41,6 @@ public static function rekisteroidy() {
 View::make('suunnitelmat/rekisteroidy.html');
 }
 
-public static function lisaaTehtava() {
-View::make('suunnitelmat/lisaatehtava.html');
-}
-
 public static function luokanKuvaus() {
 View::make('suunnitelmat/luokankuvaus.html');
 }
@@ -53,9 +49,6 @@ public static function muokkaaLuokkaa() {
 View::make('suunnitelmat/muokkaaluokkaa.html');
 }
 
-public static function lisaaLuokka() {
-View::make('suunnitelmat/lisaaluokka.html');
-}
 public static function luokat() {
 View::make('suunnitelmat/luokat.html');
 }

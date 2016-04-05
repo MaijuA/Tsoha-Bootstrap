@@ -10,10 +10,8 @@ Käyttöliittymä:
 * [Rekisteröidy](http://airosmaa.users.cs.helsinki.fi/muistilista/rekisteroidy)
 * [Tehtävät](http://airosmaa.users.cs.helsinki.fi/muistilista/muistilista)
 * [Luokat](http://airosmaa.users.cs.helsinki.fi/muistilista/luokat)
-* [Lisää tehtävä](http://airosmaa.users.cs.helsinki.fi/muistilista/lisaatehtava)
 * [Muokkaa tehtävää](http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaa?)
 * [Tehtävän kuvaus](http://airosmaa.users.cs.helsinki.fi/muistilista/kuvaus)
-* [Lisää luokka](http://airosmaa.users.cs.helsinki.fi/muistilista/lisaaluokka)
 * [Muokkaa luokkaa](http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaaluokkaa)
 * [Luokan kuvaus](http://airosmaa.users.cs.helsinki.fi/muistilista/luokankuvaus)
 

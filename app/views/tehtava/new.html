@@ -1,8 +1,10 @@
 {% extends "base.html" %}
+
 {% block content %}
+
 <h1>Lisää tehtävä listaasi</h1>
 
-<form method="post" action="{{base_path}}/game">
+<form method="post" action="{{base_path}}/tehtava">
     <div class="form-group">
         <label>Nimi</label>
         <input name="nimi" class="form-control" type="text">
@@ -11,9 +13,9 @@
     <div class="form-group">
         <label>Prioriteetti</label>
         <select name="prioriteetti">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="Erittäin tärkeä">Erittäin tärkeä</option>
+            <option value="Tärkeä">Tärkeä</option>
+            <option value="Ei niin tärkeä">Ei niin tärkeä</option>
             
         </select>
         <input type="submit">
@@ -23,9 +25,8 @@
         <label>Luokka</label>
         <select name="luokat">
             <option value="Kotityöt">Kotityöt</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
+            <option value="Opiskelu">Opiskelu</option>
+            <option value="Työt">Työt</option>            
         </select>
     </div>
 

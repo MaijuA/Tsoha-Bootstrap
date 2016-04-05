@@ -12,26 +12,22 @@ class TehtäväController extends BaseController {
 
         $tehtävät = Tehtävä::all();
 
-        View::make('suunnitelmat/muistilista.html', array('tehtävät' => $tehtävät));
+        View::make('tehtava/index.html', array('tehtävät' => $tehtävät));
     }
 
     public static function store() {
         $params = $_POST;
         $tehtävä = new Tehtävä(array(
             'nimi' => $params['nimi'],
-            'kuvaus' => $params['kuvaus'],
             'prioriteetti' => $params['prioriteetti'],
-            'luokka' => $params['luokka']
+            'status' => $params['status'],
+            'luokka' => $params['luokka'],
+            'kuvaus' => $params['kuvaus']
         ));
         $tehtävä->save();
-        Redirect::to('/suunnitelmat/' . $tehtävä->id, array('message' => 'Tehtävä on lisätty listaasi!'));
+        Redirect::to('/tehtava/' . $tehtävä->id, array('message' => 'Tehtävä on lisätty listaasi!'));
     }
 
-    public function save() {
-        $query = DB::connection()->prepare('INSERT INTO Tehtävä (nimi, prioriteetti, luokka, kuvaus) VALUES (:nimi, :prioriteetti, :luokka, :kuvaus) RETURNING id');
-        $query->execute(array('nimi' => $this->nimi, 'prioriteetti' => $this->prioriteetti, 'luokka' => $this->luokka, 'kuvaus' => $this->kuvaus));
-        $row = $query->fetch();
-        $this->id = $row['id'];
-    }
+    
 
 }

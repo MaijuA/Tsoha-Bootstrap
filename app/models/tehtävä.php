@@ -8,7 +8,7 @@
 
 class Tehtävä extends BaseModel {
 
-    public $id, $käyttäjä_id, $nimi, $prioriteetti, $status, $kuvaus;
+    public $id, $käyttäjä_id, $nimi, $prioriteetti, $luokka, $status, $kuvaus;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -33,6 +33,7 @@ class Tehtävä extends BaseModel {
                 'käyttäjä_id' => $row['käyttäjä_id'],
                 'nimi' => $row['nimi'],
                 'prioriteetti' => $row['prioriteetti'],
+                'luokka' => $row['luokka'], 
                 'status' => $row['status'],
                 'kuvaus' => $row['kuvaus']
             ));
@@ -49,10 +50,10 @@ class Tehtävä extends BaseModel {
         if ($row) {
             $tehtävä = new Tehtävä(array(
                 'id' => $row['id'],
-                'käyttäjä_id' => $row['käyttäjä_id'],
-                
+                'käyttäjä_id' => $row['käyttäjä_id'],                
                 'nimi' => $row['nimi'],
                 'prioriteetti' => $row['prioriteetti'],
+                'luokka' => $row['luokka'],
                 'status' => $row['status'],
                 'kuvaus' => $row['kuvaus']
             ));
@@ -61,6 +62,15 @@ class Tehtävä extends BaseModel {
         }
 
         return null;
+    }
+    
+    public function save() {
+        $query = DB::connection()->prepare('INSERT INTO Tehtävä (nimi, prioriteetti, status, luokka, kuvaus) VALUES (:nimi, :prioriteetti, :status, :luokka, :kuvaus) RETURNING id');
+        $query->execute(array('nimi' => $this->nimi, 'prioriteetti' => $this->prioriteetti, 'status' => $this ->status, 'luokka' => $this->luokka, 'kuvaus' => $this->kuvaus));        
+        $row = $query->fetch();
+//        Kint::trace();
+//        Kint::dump($row);
+         $this->id = $row['id'];
     }
 
 }

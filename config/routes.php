@@ -29,10 +29,6 @@ $routes->get('/rekisteroidy', function(){
   HelloWorldController::rekisteroidy();
 });
 
-$routes->get('/lisaatehtava', function(){
-  HelloWorldController::lisaaTehtava();
-});
-
 $routes->get('/luokankuvaus', function(){
   HelloWorldController::luokanKuvaus();
 });
@@ -41,24 +37,20 @@ $routes->get('/muokkaaluokkaa', function(){
   HelloWorldController::muokkaaLuokkaa();
 });
 
-$routes->get('/lisaaluokka', function(){
-  HelloWorldController::lisaaLuokka();
-});
-
 $routes->get('/luokat', function(){
   HelloWorldController::luokat();
 });
 
-$routes->get('/tehtävä', function(){
-  TehtäväController::index();
-});
-
-$routes->post('/suunnitelmat', function(){
+$routes->post('/', function(){
   TehtäväController::store();
 });
 
-$routes->get('/suunnitelmat/new', function(){
-  TehtäväController::create();
+$routes->get('/index', function(){
+  TehtäväController::index();
+});
+
+$routes->get('/new', function(){
+  TehtäväController::store();
 });
 
 
