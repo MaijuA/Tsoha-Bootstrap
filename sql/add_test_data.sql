@@ -1,3 +1,4 @@
 -- Lisää INSERT INTO lauseet tähän tiedostoon
-INSERT INTO Käyttäjä (id, nimi, käyttäjätyyppi, käyttäjätunnus, salasana) VALUES ('001', 'Kalle', 'Käyttäjä', 'Kalle123', '***');
-INSERT INTO Käyttäjä (id, nimi, käyttäjätyyppi, käyttäjätunnus, salasana) VALUES ('002', 'Pekka', 'Ylläpitäjä', 'Pekka123', '****');
+INSERT INTO Kayttaja (nimi, kayttajatyyppi, kayttajatunnus, salasana) VALUES ('Kalle', 'Kayttaja', 'Kalle123', '***');
+INSERT INTO Kayttaja (nimi, kayttajatyyppi, kayttajatunnus, salasana) VALUES ('Pekka', 'Yllapitaja', 'Pekka123', '****');
+INSERT INTO Luokka(nimi) VALUES ('Kotityot');

@@ -22,7 +22,7 @@ class Luokka extends BaseModel {
 
             $luokat[] = new Luokka(array(
                 'id' => $row['id'],
-                'käyttäjä_id' => $row['käyttäjä_id'],
+                'kayttaja_id' => $row['kayttaja_id'],
                 'nimi' => $row['nimi'],
                 'kuvaus' => $row['kuvaus']
                 
@@ -41,12 +41,12 @@ class Luokka extends BaseModel {
         if ($row) {
             $luokka = new Luokka(array(
                 'id' => $row['id'],
-                'käyttäjä_id' => $row['käyttäjä_id'],
+                'kayttaja_id' => $row['kayttaja_id'],
                 'nimi' => $row['nimi'],
                 'kuvaus' => $row['kuvaus']
             ));
 
-            return $luokat;
+            return $luokka;
         }
 
         return null;

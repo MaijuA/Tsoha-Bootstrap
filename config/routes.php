@@ -41,16 +41,20 @@ $routes->get('/luokat', function(){
   HelloWorldController::luokat();
 });
 
-$routes->post('/', function(){
-  TehtäväController::store();
+$routes->post('/tehtava', function(){
+  TehtavaController::store();
 });
 
 $routes->get('/index', function(){
-  TehtäväController::index();
+  TehtavaController::index();
 });
 
 $routes->get('/new', function(){
-  TehtäväController::store();
+  TehtavaController::create();
+});
+
+$routes->get('/tehtava/:id', function($id){
+  TehtavaController::show($id);
 });
 
 

@@ -1,6 +1,6 @@
 <?php
 
-require 'app/models/tehtävä.php';
+require 'app/models/tehtava.php';
 
 class HelloWorldController extends BaseController {
 
@@ -15,9 +15,9 @@ public static function sandbox() {
 
 
 $lasku = Tehtävä::find(1);
-$tehtävät = Tehtävä::all();
+$tehtavat = Tehtava::all();
 // Kint-luokan dump-metodi tulostaa muuttujan arvon
-Kint::dump($tehtävät);
+Kint::dump($tehtavat);
 Kint::dump($lasku);
 }
 

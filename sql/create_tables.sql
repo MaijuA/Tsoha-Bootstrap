@@ -1,27 +1,31 @@
 
-CREATE TABLE Käyttäjä(
+CREATE TABLE Kayttaja(
   id SERIAL PRIMARY KEY,
-  käyttäjätyyppi varchar(50) NOT NULL,
+  kayttajatyyppi varchar(50) NOT NULL,
   nimi varchar(50) NOT NULL,
-  käyttäjätunnus varchar(50) NOT NULL,
+  kayttajatunnus varchar(50) NOT NULL,
   salasana varchar(50) NOT NULL
 );
 
-CREATE TABLE Tehtävä(
+CREATE TABLE Luokka(
   id SERIAL PRIMARY KEY,
-  käyttäjä_id INTEGER REFERENCES Käyttäjä(id),
+  kayttaja_id INTEGER REFERENCES Kayttaja(id), 
   nimi varchar(50) NOT NULL,
-  status boolean DEFAULT FALSE,
+  kuvaus varchar(400)
+  
+  
+  );
+
+
+CREATE TABLE Tehtava(
+  id SERIAL PRIMARY KEY,
+  kayttaja_id INTEGER REFERENCES Kayttaja(id),
+  nimi varchar(50) NOT NULL,
+  status varchar(50),
+  luokka_id INTEGER REFERENCES Luokka(id),
   kuvaus varchar(400),
-  prioriteetti varchar(5)
+  prioriteetti varchar(50)
   
   );
   
 
-CREATE TABLE Luokka(
-  id SERIAL PRIMARY KEY,
-  käyttäjä_id INTEGER REFERENCES Käyttäjä(id), 
-  nimi varchar(50) NOT NULL
-  
-  
-  );
