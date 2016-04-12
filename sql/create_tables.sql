@@ -11,11 +11,8 @@ CREATE TABLE Luokka(
   id SERIAL PRIMARY KEY,
   kayttaja_id INTEGER REFERENCES Kayttaja(id), 
   nimi varchar(50) NOT NULL,
-  kuvaus varchar(400)
-  
-  
+  kuvaus varchar(400)  
   );
-
 
 CREATE TABLE Tehtava(
   id SERIAL PRIMARY KEY,
@@ -24,8 +21,7 @@ CREATE TABLE Tehtava(
   status varchar(50),
   luokka_id INTEGER REFERENCES Luokka(id),
   kuvaus varchar(400),
-  prioriteetti varchar(50)
-  
+  prioriteetti varchar(50) 
   );
   
 

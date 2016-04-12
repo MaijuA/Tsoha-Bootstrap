@@ -1,28 +1,32 @@
- {% extends "base.html" %}
-        {% block content %}
-        <h2>Tehtävä</h2>
-        {{message}}
-        <!-- Painikkeet tähän -->
-        
+{% extends "base.html" %}
+{% block content %}
+{% import "macros/forms.html" as forms %}
+<h2>Tehtävä</h2>
+{{message}}
+<!-- Painikkeet tähän -->
 
-        <!-- Tiedot tulee listana tähän -->
-        <p>
-            <button class="btn btn-danger">Poista</button> 
-            <a href="http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaa" class="btn btn-primary" role="button">Muokkaa</a>
-        </p>
-        
-        <ul>
-            <li><strong>Prioriteetti:</strong>{{tehtava.prioriteetti}}</li>
-            <li><strong>Status:</strong>{{tehtava.status}}</li>
-            
-            <li><strong>Luokka:</strong>{{tehtava.luokka_id}}</li>
-            
-        </ul>
-        <!-- Kuvaus tulee tähän -->
-        <p>
-            
-        </p>
-        
-        {% endblock %}
-    
+
+<!-- Tiedot tulee listana tähän -->
+
+
+
+
+{{forms.destroy_button("#{base_path}/tehtava/#{tehtava.id}/destroy")}}
+
+<a href="http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaa" class="btn btn-primary" role="button">Muokkaa</a>
+
+<ul>
+    <li><strong>Prioriteetti:</strong>{{tehtava.prioriteetti}}</li>
+    <li><strong>Status:</strong>{{tehtava.status}}</li>
+
+    <li><strong>Luokka:</strong>{{tehtava.luokka_id}}</li>
+
+</ul>
+<!-- Kuvaus tulee tähän -->
+<p>
+
+</p>
+
+{% endblock %}
+
 

@@ -57,6 +57,25 @@ $routes->get('/tehtava/:id', function($id){
   TehtavaController::show($id);
 });
 
+$routes->get('/tehtava/:id/edit', function($id){
+  TehtavaController::edit($id);
+});
+
+$routes->post('/tehtava/:id/edit', function($id){
+  TehtavaController::update($id);
+});
+
+$routes->post('/tehtava/:id/destroy', function($id){
+  TehtavaController::destroy($id);
+});
+
+$routes->get('/kirjaudu', function(){
+  KayttajaController::login();
+});
+$routes->post('/kirjaudu', function(){
+  KayttajaController::handle_login();
+});
+
 
 
 
