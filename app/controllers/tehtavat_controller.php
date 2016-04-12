@@ -78,7 +78,7 @@ class TehtavaController extends BaseController {
         } else {
 
             $tehtava->update();
-            Redirect::to('/tehtava/' . $tehtava->id, array('message' => 'Tehtävää on muokattu onnistuneesti!'));
+            Redirect::to('/tehtava' . $tehtava->id, array('message' => 'Tehtävää on muokattu onnistuneesti!'));
         }
     }
 
