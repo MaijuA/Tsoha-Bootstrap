@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 {% import "macros/forms.html" as forms %}
-<h2>Tehtävä</h2>
+ <h2>{{tehtava.nimi}}</h2>
 {{message}}
 <!-- Painikkeet tähän -->
 
@@ -18,9 +18,7 @@
 <ul>
     <li><strong>Prioriteetti:</strong>{{tehtava.prioriteetti}}</li>
     <li><strong>Status:</strong>{{tehtava.status}}</li>
-
     <li><strong>Luokka:</strong>{{tehtava.luokka_id}}</li>
-
 </ul>
 <!-- Kuvaus tulee tähän -->
 <p>
