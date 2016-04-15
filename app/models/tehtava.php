@@ -15,35 +15,11 @@ class Tehtava extends BaseModel {
         $this->validators = array('validate_nimi');
     }
 
-    public static function all() {
-
-        $query = DB::connection()->prepare('SELECT * FROM Tehtava');
-
-        $query->execute();
-
-        $rows = $query->fetchAll();
-        $tehtavat = array();
-        foreach ($rows as $row) {
-
-            $tehtavat[] = new Tehtava(array(
-                'id' => $row['id'],
-                'kayttaja_id' => $row['kayttaja_id'],
-                'nimi' => $row['nimi'],
-                'prioriteetti' => $row['prioriteetti'],
-                'luokka_id' => $row['luokka_id'],
-                'status' => $row['status'],
-                'kuvaus' => $row['kuvaus']
-            ));
-        }
-
-        return $tehtavat;
-    }
-    
-    public static function allByKayttaja($kayttaja_id) {
+    public static function all($kayttaja_id) {
 
         $query = DB::connection()->prepare('SELECT * FROM Tehtava WHERE kayttaja_id = :kayttaja_id');
 
-        $query->execute( array('kayttaja_id' => $kayttaja_id));
+        $query->execute(array('kayttaja_id' => $kayttaja_id));
 
         $rows = $query->fetchAll();
         $tehtavat = array();
@@ -62,6 +38,7 @@ class Tehtava extends BaseModel {
 
         return $tehtavat;
     }
+
 
     public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM Tehtava WHERE id = :id LIMIT 1');
@@ -86,8 +63,8 @@ class Tehtava extends BaseModel {
     }
 
     public function save() {
-        $query = DB::connection()->prepare('INSERT INTO Tehtava (nimi, prioriteetti, status, luokka_id, kuvaus) VALUES (:nimi, :prioriteetti, :status, :luokka_id, :kuvaus) RETURNING id');
-        $query->execute(array('nimi' => $this->nimi, 'prioriteetti' => $this->prioriteetti, 'status' => $this->status, 'luokka_id' => $this->luokka_id, 'kuvaus' => $this->kuvaus));
+        $query = DB::connection()->prepare('INSERT INTO Tehtava (nimi, kayttaja_id, prioriteetti, status, luokka_id, kuvaus) VALUES (:nimi, :kayttaja_id, :prioriteetti, :status, :luokka_id, :kuvaus) RETURNING id');
+        $query->execute(array('nimi' => $this->nimi, 'kayttaja_id' => $this->kayttaja_id, 'prioriteetti' => $this->prioriteetti, 'status' => $this->status, 'luokka_id' => $this->luokka_id, 'kuvaus' => $this->kuvaus));
         $row = $query->fetch();
 //        Kint::trace();
 //        Kint::dump($row);
@@ -95,16 +72,12 @@ class Tehtava extends BaseModel {
     }
 
     public function update($id, $attributes) {
-        $query = DB::connection()->prepare('UPDATE Tehtava');
-        $query->execute(array(nimi, luokka, status, prioriteetti, kuvaus));
+        $query = DB::connection()->prepare('UPDATE Tehtava SET (nimi = :nimi, luokka_id = :luokka_id, status = :status, prioriteetti = :prioriteetti, kuvaus = :kuvaus)');
+        $query->execute(array('nimi' => $this->nimi, 'prioriteetti' => $this->prioriteetti, 'status' => $this->status, 'luokka_id' => $this->luokka_id, 'kuvaus' => $this->kuvaus));
         $row = $query->fetch();
 
         Kint::dump($row);
-//        DB::query('UPDATE Tehtava SET (nimi, luokka, status, prioriteetti, kuvaus)
-//            = (:nimi, :luokka, :status, :prioriteetti, :kuvaus)
-//            WHERE id = :id', array('id' => $id, 'nimi' => $attributes['nimi'],
-//            'luokka' => $attributes['luokka'], 'status' => $attributes['status'],
-//            'prioriteetti' => $attributes['prioriteetti'], 'kuvaus' => $attributes['kuvaus']));
+
     }
 
     public function destroy($id) {

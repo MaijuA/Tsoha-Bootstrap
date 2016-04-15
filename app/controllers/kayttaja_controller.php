@@ -8,12 +8,12 @@ class KayttajaController extends BaseController{
     $params = $_POST;
     
     $kayttaja = Kayttaja::authenticate($params['kayttajatunnus'], $params['salasana']);
-Kint::dump($kayttaja);
+    //Kint::dump($kayttaja);
     if(!$kayttaja){
       View::make('tehtava/kirjaudu.html', array('error' => 'Väärä käyttäjätunnus tai salasana!', 'kayttajatunnus' => $params['kayttajatunnus']));
     }else{
       $_SESSION['kayttaja'] = $kayttaja->id;
-
+ //Kint::dump($kayttaja->id);
       Redirect::to('/index', array('message' => 'Tervetuloa takaisin ' . $kayttaja->nimi . '!'));
     }
   }

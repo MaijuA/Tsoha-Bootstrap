@@ -41,6 +41,10 @@ class Kayttaja extends BaseModel {
 
     public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM Kayttaja WHERE id = :id LIMIT 1');
+         $query->execute(array('id'=>$id));
+
+        $row = $query->fetchAll();
+        
         if ($row) {
             $kayttaja = new Kayttaja(array(
                 'id' => $row['id'],
@@ -71,17 +75,16 @@ class Kayttaja extends BaseModel {
     public static function authenticate($kayttajatunnus, $salasana) {
         $query = DB::connection()->prepare('SELECT * FROM Kayttaja WHERE kayttajatunnus = :kayttajatunnus and salasana = :salasana LIMIT 1');
         $query->execute(array('kayttajatunnus' => $kayttajatunnus, 'salasana' => $salasana));
-        $rows = $query->fetch();
-         Kint::dump($rows);
-        if ($rows) {
-            $row = $rows[0];
+        $row = $query->fetch();
+         Kint::dump($row);
+        if ($row) {
             $kayttaja = new Kayttaja(array(
                 'id' => $row['id'],
                 'nimi' => $row['nimi'],
                 'kayttajatunnus' => $row['kayttajatunnus'],
                 'salasana' => $row['salasana']
             ));
-            Kint::dump($kayttaja);
+           // Kint::dump($kayttaja);
            return $kayttaja;
             
         }

@@ -21,7 +21,7 @@
             <tbody>
               {% for tehtava in tehtavat %}  
                 <tr>
-                    <td><a href="http://airosmaa.users.cs.helsinki.fi/muistilista/tehtava"></a>Tehtävä</td>
+                    <td><a href="http://airosmaa.users.cs.helsinki.fi/muistilista/tehtava"></a>{{tehtava.nimi}}</td>
                     <td>1</td>
                     <td><label class="label label-danger">kesken</label></td>   
 
@@ -29,7 +29,7 @@
                     
                     <td><a href="http://airosmaa.users.cs.helsinki.fi/muistilista/luokankuvaus"></a>Luokka</td>
                     
-                    <th><a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/edit">Muokkaa</a></th>
+                    <th><a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/tehtava/{{tehtava.id}}/edit">Muokkaa</a></th>
                 </tr>
                 {% endfor %}
             </tbody>

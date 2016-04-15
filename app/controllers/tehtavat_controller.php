@@ -9,8 +9,8 @@
 class TehtavaController extends BaseController {
 
     public static function index() {
-
-        $tehtavat = Tehtava::all();
+        $kayttaja_id=$_SESSION['kayttaja'];
+        $tehtavat = Tehtava::all($kayttaja_id);
 
         View::make('tehtava/index.html', array('tehtavat' => $tehtavat));
     }
@@ -31,16 +31,18 @@ class TehtavaController extends BaseController {
 
     public static function store() {
         $params = $_POST;
-//        Kint::dump($params);
+        Kint::dump($_SESSION['kayttaja']);
+        $kayttaja_id=$_SESSION['kayttaja'];
         $attributes = array(
             'nimi' => $params['nimi'],
             'status' => $params['status'],
+            'kayttaja_id' => $kayttaja_id,
             'luokka_id' => $params['luokka_id'],
             'kuvaus' => $params['kuvaus'],
             'prioriteetti' => $params['prioriteetti']
         );
 
-        $Tehtava = new Tehtava($attributes);
+        $tehtava = new Tehtava($attributes);
         $errors = $tehtava->errors();
 
         if (count($errors) == 0) {
