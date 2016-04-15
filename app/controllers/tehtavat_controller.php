@@ -26,6 +26,8 @@ class TehtavaController extends BaseController {
         $luokka = Luokka::find($tehtava->luokka_id);
         View::make('tehtava/tehtava.html', array('tehtava' => $tehtava, 'luokka' => $luokka));
     }
+    
+    
 
     public static function store() {
         $params = $_POST;

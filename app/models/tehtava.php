@@ -17,9 +17,33 @@ class Tehtava extends BaseModel {
 
     public static function all() {
 
-        $query = DB::connection()->prepare('SELECT * FROM Tehtava WHERE kayttaja_id = :kayttaja_id', array('kayttaja_id' => $kayttaja_id));
+        $query = DB::connection()->prepare('SELECT * FROM Tehtava');
 
         $query->execute();
+
+        $rows = $query->fetchAll();
+        $tehtavat = array();
+        foreach ($rows as $row) {
+
+            $tehtavat[] = new Tehtava(array(
+                'id' => $row['id'],
+                'kayttaja_id' => $row['kayttaja_id'],
+                'nimi' => $row['nimi'],
+                'prioriteetti' => $row['prioriteetti'],
+                'luokka_id' => $row['luokka_id'],
+                'status' => $row['status'],
+                'kuvaus' => $row['kuvaus']
+            ));
+        }
+
+        return $tehtavat;
+    }
+    
+    public static function allByKayttaja($kayttaja_id) {
+
+        $query = DB::connection()->prepare('SELECT * FROM Tehtava WHERE kayttaja_id = :kayttaja_id');
+
+        $query->execute( array('kayttaja_id' => $kayttaja_id));
 
         $rows = $query->fetchAll();
         $tehtavat = array();
