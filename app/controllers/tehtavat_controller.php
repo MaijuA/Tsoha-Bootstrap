@@ -99,5 +99,7 @@ class TehtavaController extends BaseController {
     public static function kirjaudu() {
         View::make('tehtava/kirjaudu.html');
     }
+    
+    
 
 }

@@ -53,6 +53,10 @@ $routes->get('/new', function(){
   TehtavaController::create();
 });
 
+$routes->get('/uusiluokka', function(){
+  LuokkaController::lisaaLuokka();
+});
+
 $routes->get('/tehtava/:id', function($id){
   TehtavaController::show($id);
 });
