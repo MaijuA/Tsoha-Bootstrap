@@ -38,11 +38,19 @@ $routes->get('/muokkaaluokkaa', function(){
 });
 
 $routes->get('/luokat', function(){
-  HelloWorldController::luokat();
+  LuokkaController::luokat();
 });
 
 $routes->post('/tehtava', function(){
   TehtavaController::store();
+});
+
+$routes->get('/tehtava/:id', function($id){
+  TehtavaController::show($id);
+});
+
+$routes->get('/luokka/:id', function($id){
+  LuokkaController::show($id);
 });
 
 $routes->get('/index', function(){
@@ -53,12 +61,32 @@ $routes->get('/new', function(){
   TehtavaController::create();
 });
 
-$routes->get('/uusiluokka', function(){
-  LuokkaController::lisaaLuokka();
+$routes->post('/luokka', function(){
+  LuokkaController::store();
 });
 
-$routes->get('/tehtava/:id', function($id){
-  TehtavaController::show($id);
+$routes->get('/uusiluokka', function(){
+  LuokkaController::create();
+});
+
+$routes->get('/luokka/:id', function($id){
+  LuokkaController::show($id);
+});
+
+$routes->get('/luokka/:id', function($id){
+  LuokkaController::show($id);
+});
+
+$routes->get('/luokka/:id/edit', function($id){
+  LuokkaController::edit($id);
+});
+
+$routes->post('/luokka/:id/edit', function($id){
+  LuokkaController::update($id);
+});
+
+$routes->post('/luokka/:id/destroy', function($id){
+  LuokkaController::destroy($id);
 });
 
 $routes->get('/tehtava/:id/edit', function($id){
@@ -78,6 +106,10 @@ $routes->get('/kirjaudu', function(){
 });
 $routes->post('/kirjaudu', function(){
   KayttajaController::handle_login();
+});
+
+$routes->post('/kirjaudu', function(){
+  KayttajaController::logout();
 });
 
 

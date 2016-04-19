@@ -52,6 +52,31 @@ class Luokka extends BaseModel {
 
         return null;
     }
+    
+    public function save() {
+        $query = DB::connection()->prepare('INSERT INTO Luokka (nimi, kayttaja_id, kuvaus) VALUES (:nimi, :kayttaja_id, :kuvaus) RETURNING id');
+        $query->execute(array('nimi' => $this->nimi, 'kayttaja_id' => $this->kayttaja_id, 'kuvaus' => $this->kuvaus));
+        $row = $query->fetch();
+//        Kint::trace();
+//        Kint::dump($row);
+        $this->id = $row['id'];
+    }
+
+    public function update($id, $attributes) {
+        $query = DB::connection()->prepare('UPDATE Luokka SET (nimi = :nimi, kayttaja_id = :kayttaja_id, kuvaus = :kuvaus)');
+        $query->execute(array('nimi' => $this->nimi, 'kayttaja_id' => $this->kayttaja_id, 'kuvaus' => $this->kuvaus));
+        $row = $query->fetch();
+
+        Kint::dump($row);
+
+    }
+
+    public function destroy($id) {
+        self::disconnect_categories($id);
+        DB::query('DELETE FROM Luokka WHERE id = :id', array('id' => $id));
+    }
+
+    
     public function validate_nimi() {
         $errors = array();
         if ($this->nimi == '' || $this->nimi == null) {

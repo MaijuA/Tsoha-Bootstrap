@@ -1,12 +1,85 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 class LuokkaController extends BaseController {
-public static function lisaaLuokka() {
+
+    public static function luokat() {
+        $kayttaja_id=$_SESSION['kayttaja'];
+        $luokat = Luokka::all($kayttaja_id);
+
+        View::make('tehtava/luokat.html', array('luokat' => $luokat));
+    }
+    
+    public static function store() {
+        self::check_logged_in();
+        $params = $_POST;
+        Kint::dump($_SESSION['kayttaja']);
+        $kayttaja_id = $_SESSION['kayttaja'];
+        $attributes = array(
+            'nimi' => $params['nimi'],          
+            'kayttaja_id' => $kayttaja_id,           
+            'kuvaus' => $params['kuvaus']            
+        );
+
+        $luokka = new Luokka($attributes);
+        $errors = $luokka->errors();
+
+        if (count($errors) == 0) {
+
+            $luokka->save();
+
+            Redirect::to('/tehtava/index' . $luokka->id, array('message' => 'Luokka on lisätty kirjastoosi!'));
+        } else {
+            View::make('tehtava/uusiluokka.html', array('errors' => $errors, 'attributes' => $attributes));
+        }
+    }
+    
+    public static function create() {
+        self::check_logged_in();
         View::make('tehtava/uusiluokka.html');
     }
+    
+    public static function show($id) {
+        $luokka = Luokka::find($id);
+        View::make('tehtava/luokka.html', array('luokka' => $luokka));
     }
+    
+     public static function edit($id) {
+        $luokka = Luokka::find($id);
+        View::make('tehtava/muokkaaluokkaa.html', array('attributes' => $luokka));
+    }
+
+    public static function update($id) {
+        $params = $_POST;
+        $attributes = array(
+            'id' => $id,
+            'nimi' => $params['nimi'],           
+            'kuvaus' => $params['kuvaus']
+        );
+//        Kint::dump($params);
+
+        $luokka = new Luokka($attributes);
+        $errors = $luokka->errors();
+
+       if (count($errors) > 0) {
+            View::make('tehtava/muokkaaluokkaa.html', array('errors' => $errors, 'attributes' => $attributes));
+        } else {
+
+            $luokka->update();
+            Redirect::to('/luokka' . $luokka->id, array('message' => 'Luokkaa on muokattu onnistuneesti!'));
+        }
+    }
+
+    public static function destroy($id) {
+        self::check_logged_in();
+        $luokka = new Luokka(array('id' => $id));  
+        $luokka->destroy();
+        Redirect::to('/luokka', array('message' => 'Luokka on poistettu onnistuneesti!'));
+    }
+
+}

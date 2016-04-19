@@ -16,7 +16,7 @@ class TehtavaController extends BaseController {
     }
 
     public static function create() {
-
+        self::check_logged_in();
         View::make('tehtava/new.html');
     }
 
@@ -30,6 +30,7 @@ class TehtavaController extends BaseController {
     
 
     public static function store() {
+        self::check_logged_in();
         $params = $_POST;
         Kint::dump($_SESSION['kayttaja']);
         $kayttaja_id=$_SESSION['kayttaja'];
@@ -86,14 +87,11 @@ class TehtavaController extends BaseController {
         }
     }
 
-    public static function destroy($id) {    
+    public static function destroy($id) {
+        self::check_logged_in();
         $tehtava = new Tehtava(array('id' => $id));  
         $tehtava->destroy();
         Redirect::to('/tehtava', array('message' => 'Tehtävä on poistettu onnistuneesti!'));
-    }
-    
-    public static function muokkaa() {
-        View::make('suunnitelmat/muokkaa.html');
     }
 
     public static function kirjaudu() {

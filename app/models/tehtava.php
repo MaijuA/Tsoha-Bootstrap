@@ -72,8 +72,8 @@ class Tehtava extends BaseModel {
     }
 
     public function update($id, $attributes) {
-        $query = DB::connection()->prepare('UPDATE Tehtava SET (nimi = :nimi, luokka_id = :luokka_id, status = :status, prioriteetti = :prioriteetti, kuvaus = :kuvaus)');
-        $query->execute(array('nimi' => $this->nimi, 'prioriteetti' => $this->prioriteetti, 'status' => $this->status, 'luokka_id' => $this->luokka_id, 'kuvaus' => $this->kuvaus));
+        $query = DB::connection()->prepare('UPDATE Tehtava SET (nimi = :nimi, kayttaja_id = :kayttaja_id, luokka_id = :luokka_id, status = :status, prioriteetti = :prioriteetti, kuvaus = :kuvaus)');
+        $query->execute(array('nimi' => $this->nimi, 'prioriteetti' => $this->prioriteetti, 'status' => $this->status, 'luokka_id' => $this->luokka_id, 'kayttaja_id' => $this->kayttaja_id, 'kuvaus' => $this->kuvaus));
         $row = $query->fetch();
 
         Kint::dump($row);
