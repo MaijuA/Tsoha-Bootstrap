@@ -108,7 +108,7 @@ $routes->post('/kirjaudu', function(){
   KayttajaController::handle_login();
 });
 
-$routes->post('/kirjaudu', function(){
+$routes->post('/logout', function(){
   KayttajaController::logout();
 });
 

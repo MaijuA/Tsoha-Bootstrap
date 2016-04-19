@@ -9,7 +9,7 @@
 class TehtavaController extends BaseController {
 
     public static function index() {
-        $kayttaja_id=$_SESSION['kayttaja'];
+        $kayttaja_id = $_SESSION['kayttaja'];
         $tehtavat = Tehtava::all($kayttaja_id);
 
         View::make('tehtava/index.html', array('tehtavat' => $tehtavat));
@@ -26,23 +26,30 @@ class TehtavaController extends BaseController {
         $luokka = Luokka::find($tehtava->luokka_id);
         View::make('tehtava/tehtava.html', array('tehtava' => $tehtava, 'luokka' => $luokka));
     }
-    
-    
 
     public static function store() {
         self::check_logged_in();
         $params = $_POST;
         Kint::dump($_SESSION['kayttaja']);
-        $kayttaja_id=$_SESSION['kayttaja'];
+        $kayttaja_id = $_SESSION['kayttaja'];
+        $luokat = $params['luokat'];
+        
         $attributes = array(
             'nimi' => $params['nimi'],
             'status' => $params['status'],
             'kayttaja_id' => $kayttaja_id,
-            'luokka_id' => $params['luokka_id'],
+            'luokat' => array(),
             'kuvaus' => $params['kuvaus'],
             'prioriteetti' => $params['prioriteetti']
         );
-
+        
+//        if(isset($params['luokat'])) {
+        foreach ($luokat as $luokka) {
+            // Lisätään kaikkien kategorioiden id:t taulukkoon
+            $attributes['luokat'][] = $luokka;
+        }
+//        }
+        
         $tehtava = new Tehtava($attributes);
         $errors = $tehtava->errors();
 
@@ -78,7 +85,7 @@ class TehtavaController extends BaseController {
         $tehtava = new Tehtava($attributes);
         $errors = $tehtava->errors();
 
-       if (count($errors) > 0) {
+        if (count($errors) > 0) {
             View::make('tehtava/edit.html', array('errors' => $errors, 'attributes' => $attributes));
         } else {
 
@@ -89,7 +96,7 @@ class TehtavaController extends BaseController {
 
     public static function destroy($id) {
         self::check_logged_in();
-        $tehtava = new Tehtava(array('id' => $id));  
+        $tehtava = new Tehtava(array('id' => $id));
         $tehtava->destroy();
         Redirect::to('/tehtava', array('message' => 'Tehtävä on poistettu onnistuneesti!'));
     }
@@ -97,7 +104,5 @@ class TehtavaController extends BaseController {
     public static function kirjaudu() {
         View::make('tehtava/kirjaudu.html');
     }
-    
-    
 
 }

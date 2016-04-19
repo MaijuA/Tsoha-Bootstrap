@@ -6,3 +6,4 @@ INSERT INTO Tehtava (nimi) VALUES ('palautus');
 INSERT INTO Luokka(nimi) VALUES ('Kotityöt');
 INSERT INTO Luokka(nimi) VALUES ('Työt');
 INSERT INTO Luokka(nimi) VALUES ('Opiskelu');
+INSERT INTO Luokka(nimi, kayttaja_id) VALUES ('opiskelu', '3');

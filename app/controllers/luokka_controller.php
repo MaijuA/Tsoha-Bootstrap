@@ -35,7 +35,7 @@ class LuokkaController extends BaseController {
 
             Redirect::to('/tehtava/index' . $luokka->id, array('message' => 'Luokka on lisätty kirjastoosi!'));
         } else {
-            View::make('tehtava/uusiluokka.html', array('errors' => $errors, 'attributes' => $attributes));
+            View::make('tehtava/luokka.html', array('errors' => $errors, 'attributes' => $attributes));
         }
     }
     
