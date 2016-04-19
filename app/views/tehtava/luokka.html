@@ -9,9 +9,11 @@
 <!-- Tiedot tulee listana tähän -->
 
 
-
-
-{{forms.destroy_button("#{base_path}/tehtava/#{tehtava.id}/destroy")}}
+<p>
+<form method="post" action="{{base_path}}/luokka/{{luokka.id}}/destroy" class="destroy-form" data-confirm="Oletko varma, että haluat poistaa luokan?">
+    <button type="submit" class="btn btn-danger">Poista</button>
+</form>
+</p>
 
 <a href="http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaaluokkaa" class="btn btn-primary" role="button">Muokkaa</a>
 

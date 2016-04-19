@@ -1,19 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 {% import "macros/forms.html" as forms %}
- <h2>{{tehtava.nimi}}</h2>
+<h2>{{tehtava.nimi}}</h2>
 {{message}}
-<!-- Painikkeet tähän -->
-
-
-<!-- Tiedot tulee listana tähän -->
-
-
-
-
-{{forms.destroy_button("#{base_path}/tehtava/#{tehtava.id}/destroy")}}
-
-<a href="http://airosmaa.users.cs.helsinki.fi/muistilista/edit" class="btn btn-primary" role="button">Muokkaa</a>
 
 <ul>
     <li><strong>Prioriteetti:</strong>{{tehtava.prioriteetti}}</li>
@@ -24,6 +13,12 @@
 <p>
 
 </p>
+<p>
+<form method="post" action="{{base_path}}/tehtava/{{tehtava.id}}/destroy" class="destroy-form" data-confirm="Oletko varma, että haluat poistaa tehtävän?">
+    <button type="submit" class="btn btn-danger">Poista</button>
+</form>
+</p>
+<a href="http://airosmaa.users.cs.helsinki.fi/muistilista/edit" class="btn btn-primary" role="button">Muokkaa</a>
 
 {% endblock %}
 
