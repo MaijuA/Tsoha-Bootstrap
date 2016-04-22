@@ -1,9 +1,5 @@
 <?php
 
-$routes->get('/', function() {
-KayttajaController::login();
-});
-
 $routes->get('/hiekkalaatikko', function() {
 HelloWorldController::sandbox();
 });
@@ -110,6 +106,10 @@ $routes->post('/kirjaudu', function(){
 
 $routes->post('/logout', function(){
   KayttajaController::logout();
+});
+
+$routes->get('/', function() {
+KayttajaController::login();
 });
 
 

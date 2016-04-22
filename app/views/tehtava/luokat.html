@@ -2,31 +2,21 @@
         {% block content %}
         <h1>Käyttäjän {{user_logged_in.nimi}} luokat</h1> 
         <p>
-       
         <a href="http://airosmaa.users.cs.helsinki.fi/muistilista/uusiluokka" class="btn btn-primary" role="button">Lisää luokka</a>
         </p>
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>Luokka</th>
-                    <th>Kuvaus</th>
-                    
-                    
+                    <th>Kuvaus</th>            
                     <th></th>
                 </tr>
             </thead>
-
             <tbody>
               {% for luokka in luokat %}  
                 <tr>
-                    <td><a href="http://airosmaa.users.cs.helsinki.fi/muistilista/luokankuvaus"></a>Luokka</td>
-                    <td>1</td>
-                    <td><label class="label label-danger">kesken</label></td>   
-
-                    
-                    
-                    
-                    
+                    <td><a href="http://airosmaa.users.cs.helsinki.fi/muistilista/luokankuvaus"></a>{{luokka.nimi}}</td>
+                    <td>{{luokka.kuvaus}}</td>           
                     <th><a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaaluokkaa">Muokkaa</a></th>
                 </tr>
                 {% endfor %}

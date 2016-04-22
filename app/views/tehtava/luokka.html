@@ -3,27 +3,16 @@
 {% import "macros/forms.html" as forms %}
  <h2>{{luokka.nimi}}</h2>
 {{message}}
-<!-- Painikkeet tähän -->
-
-
-<!-- Tiedot tulee listana tähän -->
-
-
 <p>
 <form method="post" action="{{base_path}}/luokka/{{luokka.id}}/destroy" class="destroy-form" data-confirm="Oletko varma, että haluat poistaa luokan?">
     <button type="submit" class="btn btn-danger">Poista</button>
 </form>
 </p>
-
 <a href="http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaaluokkaa" class="btn btn-primary" role="button">Muokkaa</a>
-
 <ul>
     <li><strong>Nimi:</strong>{{luokka.nimi}}</li>
     <li><strong>Kuvaus:</strong>{{luokka.kuvaus}}</li>
 </ul>
-<!-- Kuvaus tulee tähän -->
 <p>
-
 </p>
-
 {% endblock %}

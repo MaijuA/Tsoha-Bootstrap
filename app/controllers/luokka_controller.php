@@ -8,15 +8,16 @@
 
 class LuokkaController extends BaseController {
 
+    // luokkien listaussivu
     public static function luokat() {
+        self::check_logged_in();
         $kayttaja_id=$_SESSION['kayttaja'];
         $luokat = Luokka::all($kayttaja_id);
-
         View::make('tehtava/luokat.html', array('luokat' => $luokat));
     }
     
+    // lisää luokka
     public static function store() {
-        self::check_logged_in();
         $params = $_POST;
         Kint::dump($_SESSION['kayttaja']);
         $kayttaja_id = $_SESSION['kayttaja'];
@@ -25,35 +26,37 @@ class LuokkaController extends BaseController {
             'kayttaja_id' => $kayttaja_id,           
             'kuvaus' => $params['kuvaus']            
         );
-
         $luokka = new Luokka($attributes);
         $errors = $luokka->errors();
-
         if (count($errors) == 0) {
-
             $luokka->save();
-
-            Redirect::to('/tehtava/index' . $luokka->id, array('message' => 'Luokka on lisätty kirjastoosi!'));
+            Redirect::to('/luokka/' . $luokka->id, array('message' => 'Luokka on lisätty kirjastoosi!'));
         } else {
-            View::make('tehtava/luokka.html', array('errors' => $errors, 'attributes' => $attributes));
+            View::make('tehtava/uusiluokka.html', array('errors' => $errors, 'attributes' => $attributes));
         }
     }
     
+    // luokan lisäyssivu
     public static function create() {
         self::check_logged_in();
         View::make('tehtava/uusiluokka.html');
     }
     
+    // näytä luokka
     public static function show($id) {
+        self::check_logged_in();
         $luokka = Luokka::find($id);
         View::make('tehtava/luokka.html', array('luokka' => $luokka));
     }
     
+    // luokan muokkaussivu
      public static function edit($id) {
+        self::check_logged_in();
         $luokka = Luokka::find($id);
         View::make('tehtava/muokkaaluokkaa.html', array('attributes' => $luokka));
     }
 
+    // muokkaa luokkaa
     public static function update($id) {
         $params = $_POST;
         $attributes = array(
@@ -61,25 +64,20 @@ class LuokkaController extends BaseController {
             'nimi' => $params['nimi'],           
             'kuvaus' => $params['kuvaus']
         );
-//        Kint::dump($params);
-
         $luokka = new Luokka($attributes);
         $errors = $luokka->errors();
-
        if (count($errors) > 0) {
             View::make('tehtava/muokkaaluokkaa.html', array('errors' => $errors, 'attributes' => $attributes));
         } else {
-
             $luokka->update();
             Redirect::to('/luokka' . $luokka->id, array('message' => 'Luokkaa on muokattu onnistuneesti!'));
         }
     }
 
+    // poista luokka
     public static function destroy($id) {
-        self::check_logged_in();
         $luokka = new Luokka(array('id' => $id));  
         $luokka->destroy();
         Redirect::to('/luokka', array('message' => 'Luokka on poistettu onnistuneesti!'));
     }
-
 }
