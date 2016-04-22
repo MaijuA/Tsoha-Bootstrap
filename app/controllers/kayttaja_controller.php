@@ -3,8 +3,8 @@
 class KayttajaController extends BaseController {
 
     // kirjautumissivu
-    public static function login() {
-        View::make('tehtava/kirjaudu.html');
+    public static function login() {  
+        View::make('tehtava/kirjaudu.html');  
     }
 
     // kirjaudu ulos

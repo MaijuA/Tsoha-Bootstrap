@@ -4,7 +4,7 @@
 {% import "macros/forms.html" as forms %}
 
 <h2>Muokkaa tehtävää {{tehtava.nimi}}</h2>
-
+<!--
 {% if errors %}
 <div class="alert alert-danger">
     <ul>
@@ -15,10 +15,11 @@
 </div>
 
 {% endif %}
+-->
 <form>
     <div class="form-group">
         <label>Nimi</label>
-        <input name="nimi" class="form-control" type="text" value="nimi {{tehtava.nimi}}">
+        <input name="nimi" class="form-control" type="text" value="{{tehtava.nimi}}">
     </div>
 
     <div class="form-group">
@@ -57,6 +58,9 @@
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Tallenna</button>
     </div>
+</form>
+<form method="post" action="{{base_path}}/tehtava/{{tehtava.id}}/destroy" class="destroy-form" data-confirm="Oletko varma, että haluat poistaa luokan?">
+    <button type="submit" class="btn btn-danger">Poista</button>
 </form>
 {% endblock %}
 

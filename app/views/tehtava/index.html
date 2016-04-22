@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 {% if user_logged_in %}
+<p>
+{{message}}
+</p>
 <h1>Käyttäjän {{user_logged_in.nimi}} tehtävät</h1> 
 {% endif %}
+
 <p>
     <a href="http://airosmaa.users.cs.helsinki.fi/muistilista/new" class="btn btn-success" role="button">Lisää tehtävä</a>
     <a href="http://airosmaa.users.cs.helsinki.fi/muistilista/uusiluokka" class="btn btn-primary" role="button">Lisää luokka</a>

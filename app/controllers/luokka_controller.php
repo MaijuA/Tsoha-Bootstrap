@@ -53,7 +53,7 @@ class LuokkaController extends BaseController {
      public static function edit($id) {
         self::check_logged_in();
         $luokka = Luokka::find($id);
-        View::make('tehtava/muokkaaluokkaa.html', array('attributes' => $luokka));
+        View::make('tehtava/muokkaaluokkaa.html', array('luokka' => $luokka));
     }
 
     // muokkaa luokkaa
@@ -77,7 +77,7 @@ class LuokkaController extends BaseController {
     // poista luokka
     public static function destroy($id) {
         $luokka = new Luokka(array('id' => $id));  
-        $luokka->destroy();
-        Redirect::to('/luokka', array('message' => 'Luokka on poistettu onnistuneesti!'));
+        $luokka->destroy($id);
+        Redirect::to('/luokat', array('message' => 'Luokka on poistettu onnistuneesti!'));
     }
 }

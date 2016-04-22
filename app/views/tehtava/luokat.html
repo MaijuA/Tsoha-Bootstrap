@@ -1,6 +1,7 @@
  {% extends "base.html" %}
         {% block content %}
         <h1>Käyttäjän {{user_logged_in.nimi}} luokat</h1> 
+        {{message}}
         <p>
         <a href="http://airosmaa.users.cs.helsinki.fi/muistilista/uusiluokka" class="btn btn-primary" role="button">Lisää luokka</a>
         </p>
@@ -17,7 +18,7 @@
                 <tr>
                     <td><a href="http://airosmaa.users.cs.helsinki.fi/muistilista/luokankuvaus"></a>{{luokka.nimi}}</td>
                     <td>{{luokka.kuvaus}}</td>           
-                    <th><a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaaluokkaa">Muokkaa</a></th>
+                    <th><a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/luokka/{{luokka.id}}/muokkaaluokkaa">Muokkaa</a></th>
                 </tr>
                 {% endfor %}
             </tbody>

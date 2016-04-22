@@ -15,19 +15,13 @@ class TehtavaController extends BaseController {
         $tehtavat = Tehtava::all($kayttaja_id);
         View::make('tehtava/index.html', array('tehtavat' => $tehtavat));
     }
-
-    // näytä tehtävä
-    public static function show($id) {
-        self::check_logged_in();
-        $tehtava = Tehtava::find($id);
-        $luokka = Luokka::find($tehtava->luokka_id);
-        View::make('tehtava/tehtava.html', array('tehtava' => $tehtava, 'luokka' => $luokka));
-    }
     
     // tehtävän lisäyssivu
     public static function create() {
         self::check_logged_in();
-        View::make('tehtava/new.html');
+        $kayttaja_id = $_SESSION['kayttaja'];
+        $luokat = Luokka::all($kayttaja_id);
+        View::make('tehtava/new.html', array('luokat' => $luokat));
     }
 
     // lisää tehtävä
@@ -45,10 +39,16 @@ class TehtavaController extends BaseController {
             'prioriteetti' => $params['prioriteetti']
         );        
 //        if(isset($params['luokat'])) {
-        foreach ($luokat as $luokka) {
-            // Lisätään kaikkien kategorioiden id:t taulukkoon
-            $attributes['luokat'][] = $luokka;
-        }
+//        foreach ($luokat as $luokka) {
+//     
+//            $attributes['luokat'][] = $luokka;
+//        }
+////        
+//        if(isset($params['luokka'])){
+//            $selected_luokat = $params['luokka'];
+//        }else{
+//            $selected_luokat = null;
+//        }
 //        }        
         $tehtava = new Tehtava($attributes);
         $errors = $tehtava->errors();
@@ -64,7 +64,15 @@ class TehtavaController extends BaseController {
     public static function edit($id) {
         self::check_logged_in();
         $tehtava = Tehtava::find($id);
-        View::make('tehtava/edit.html', array('attributes' => $tehtava));
+        View::make('tehtava/edit.html', array('tehtava' => $tehtava));
+    }
+    
+    // näytä tehtävä
+    public static function show($id) {
+        self::check_logged_in();
+        $tehtava = Tehtava::find($id);
+        $luokka = Luokka::find($tehtava->luokka_id);
+        View::make('tehtava/tehtava.html', array('tehtava' => $tehtava, 'luokka' => $luokka));
     }
 
     // muokkaa tehtävää
@@ -92,7 +100,7 @@ class TehtavaController extends BaseController {
     // poista tehtävä
     public static function destroy($id) {
         $tehtava = new Tehtava(array('id' => $id));
-        $tehtava->destroy();
-        Redirect::to('/tehtava', array('message' => 'Tehtävä on poistettu onnistuneesti!'));
-    }
+        $tehtava->destroy($id);
+        Redirect::to('/index', array('message' => 'Tehtävä on poistettu onnistuneesti!'));
+    }    
 }

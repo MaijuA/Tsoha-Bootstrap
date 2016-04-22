@@ -1,9 +1,6 @@
 {% extends "base.html" %}
-
 {% block content %}
-
 <h1>Lisää luokka</h1>
-
 {% if errors %}
 <div class="alert alert-danger">
     <ul>
@@ -14,7 +11,7 @@
 </div>
 {% endif %}
 
-<form method="post" action="{{base_path}}/uusiluokka">
+<form method="post" action="{{base_path}}/luokka">
     <div class="form-group">
         <label>Nimi</label>
         <input name="nimi" class="form-control" type="text">

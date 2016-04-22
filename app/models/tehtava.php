@@ -60,8 +60,6 @@ class Tehtava extends BaseModel {
         $query = DB::connection()->prepare('INSERT INTO Tehtava (nimi, kayttaja_id, prioriteetti, status, luokka_id, kuvaus) VALUES (:nimi, :kayttaja_id, :prioriteetti, :status, :luokka_id, :kuvaus) RETURNING id');
         $query->execute(array('nimi' => $this->nimi, 'kayttaja_id' => $this->kayttaja_id, 'prioriteetti' => $this->prioriteetti, 'status' => $this->status, 'luokka_id' => $this->luokka_id, 'kuvaus' => $this->kuvaus));
         $row = $query->fetch();
-//        Kint::trace();
-//        Kint::dump($row);
         $this->id = $row['id'];
     }
 
@@ -75,8 +73,8 @@ class Tehtava extends BaseModel {
 
     // poista tehtävä
     public function destroy($id) {
-        self::disconnect_luokat($id);
-        DB::query('DELETE FROM Tehtava WHERE id = :id', array('id' => $id));
+        $query = DB::connection()->prepare('DELETE FROM Tehtava WHERE id = :id');
+        $query->execute(array('id' => $id));
     }
 
     // tarkista, että tehtävän nimi on oikeassa muodossa

@@ -23,5 +23,10 @@ CREATE TABLE Tehtava(
   kuvaus varchar(400),
   prioriteetti varchar(50) 
   );
-  
+
+  CREATE TABLE Liitos(
+  id SERIAL PRIMARY KEY,
+  tehtava_id INTEGER REFERENCES Tehtava(id),
+  luokka_id INTEGER REFERENCES Luokka(id)
+  );
 

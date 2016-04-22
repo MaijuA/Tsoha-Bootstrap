@@ -2,7 +2,7 @@
 
 class Luokka extends BaseModel {
 
-    public $id, $käyttäjä_id, $nimi, $kuvaus;
+    public $id, $kayttaja_id, $nimi, $kuvaus;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -62,9 +62,9 @@ class Luokka extends BaseModel {
     }
 
     // poista luokka
-    public function destroy($id) {
-        self::disconnect_categories($id);
-        DB::query('DELETE FROM Luokka WHERE id = :id', array('id' => $id));
+    public function destroy($id) {   
+        $query = DB::connection()->prepare('DELETE FROM Luokka WHERE id = :id');
+        $query->execute(array('id' => $id));
     }
 
     // tarkista, että luokan nimi on oikeassa muodossa
