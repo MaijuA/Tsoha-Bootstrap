@@ -6,6 +6,7 @@
  * and open the template in the editor.
  */
 
+// make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
 class TehtavaController extends BaseController {
 
     // tehtävien listaussivu

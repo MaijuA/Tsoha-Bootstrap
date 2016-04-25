@@ -3,11 +3,10 @@
 require 'app/models/tehtava.php';
 
 class HelloWorldController extends BaseController {
+// make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
 
     public static function index() {
-// make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
         View::make('suunnitelmat/kirjautuminen.html');
-//echo 'Tämä on etusivu!';
     }
 
     public static function sandbox() {

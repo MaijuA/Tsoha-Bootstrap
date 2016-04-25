@@ -1,5 +1,5 @@
 <?php
-
+// make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
 class KayttajaController extends BaseController {
 
     // kirjautumissivu

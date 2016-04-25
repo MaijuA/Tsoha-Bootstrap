@@ -3,8 +3,11 @@
 {% block content %}
 {% import "macros/forms.html" as forms %}
 
-<h2>Muokkaa tehtävää {{tehtava.nimi}}</h2>
 <!--
+muokkaa olemassa olevaa tehtävää
+-->
+<h2>Muokkaa tehtävää {{tehtava.nimi}}</h2>
+
 {% if errors %}
 <div class="alert alert-danger">
     <ul>
@@ -15,7 +18,7 @@
 </div>
 
 {% endif %}
--->
+
 <form>
     <div class="form-group">
         <label>Nimi</label>
