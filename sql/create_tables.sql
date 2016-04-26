@@ -25,8 +25,8 @@ CREATE TABLE Tehtava(
   );
 
   CREATE TABLE Liitos(
-  id SERIAL PRIMARY KEY,
-  tehtava_id INTEGER REFERENCES Tehtava(id),
-  luokka_id INTEGER REFERENCES Luokka(id)
+  tehtava_id INTEGER REFERENCES Tehtava(id) NOT NULL,
+  luokka_id INTEGER REFERENCES Luokka(id) NOT NULL,
+  PRIMARY KEY (tehtava_id, luokka_id)
   );
 

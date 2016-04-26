@@ -51,7 +51,7 @@ class Kayttaja extends BaseModel {
         return null;
     }
 
-    // onko nimi oikeassa muodossa
+    // tarkistaa onko nimi oikeassa muodossa
     public function validate_nimi() {
         $errors = array();
         if ($this->nimi == '' || $this->nimi == null) {
@@ -59,6 +59,39 @@ class Kayttaja extends BaseModel {
         }
         if (strlen($this->nimi) < 3) {
             $errors[] = 'Nimen pituuden tulee olla vähintään kolme merkkiä!';
+        }
+        if (strlen($this->nimi) > 50) {
+            $errors[] = 'Nimi saa olla korkeintaan 50 merkkiä pitkä!';
+        }
+        return $errors;
+    }
+    
+    // tarkistaa onko käyttäjätunnus oikeassa muodossa
+    public function validate_kayttajatunnus() {
+        $errors = array();
+        if ($this->kayttajatunnus == '' || $this->kayttajatunnus == null) {
+            $errors[] = 'Käyttäjätunnus ei saa olla tyhjä!';
+        }
+        if (strlen($this->kayttajatunnus) < 3) {
+            $errors[] = 'Käyttäjätunnuksen tulee olla vähintään kolme merkkiä pitkä!';
+        }
+        if (strlen($this->kayttajatunnus) > 50) {
+            $errors[] = 'Käyttäjätunnus saa olla korkeintaan 50 merkkiä pitkä!';
+        }
+        return $errors;
+    }
+    
+    // tarkistaa onko salasana oikeassa muodossa
+    public function validate_salasana() {
+        $errors = array();
+        if ($this->salasana == '' || $this->salasana == null) {
+            $errors[] = 'Salasana ei saa olla tyhjä!';
+        }
+        if (strlen($this->salasana) < 3) {
+            $errors[] = 'Salasana tulee olla vähintään kolme merkkiä pitkä!';
+        }
+        if (strlen($this->salasana) > 50) {
+            $errors[] = 'Salasana saa olla korkeintaan 50 merkkiä pitkä!';
         }
         return $errors;
     }

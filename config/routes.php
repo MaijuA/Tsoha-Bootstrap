@@ -3,9 +3,11 @@
 $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
 });
+
 $routes->get('/muistilista', function() {
     HelloWorldController::muistilista();
 });
+
 $routes->get('/muokkaa', function() {
     HelloWorldController::muokkaa();
 });
@@ -13,6 +15,7 @@ $routes->get('/muokkaa', function() {
 $routes->get('/kirjautuminen', function() {
     HelloWorldController::kirjaudu();
 });
+
 $routes->get('/kuvaus/', function() {
     HelloWorldController::kuvaus();
 });

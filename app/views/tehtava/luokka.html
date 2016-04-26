@@ -4,19 +4,21 @@
 <!--
 luokan esittelysivu
 -->
- <h2>{{luokka.nimi}}</h2>
+<h2>{{luokka.nimi}}</h2>
 {{message}}
+
 <div class="form-group">
-<form method="post" action="{{base_path}}/luokka/{{luokka.id}}/destroy" class="destroy-form" data-confirm="Oletko varma, että haluat poistaa luokan?">
-    <button type="submit" class="btn btn-danger">Poista</button>
-</form>
-<a href="http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaaluokkaa" class="btn btn-primary" role="button">Muokkaa</a>
-</div>
-<div class="form-group">
-<ul>
-    <li><strong>Nimi:</strong>{{luokka.nimi}}</li>
-    <li><strong>Kuvaus:</strong>{{luokka.kuvaus}}</li>
-</ul>
-<p>
-</p>
-{% endblock %}
+    <ul>
+        <li><strong>Nimi:  </strong>{{luokka.nimi}}</li>
+        <li><strong>Kuvaus:  </strong>{{luokka.kuvaus}}</li>
+    </ul>
+    <p>
+    </p>
+    <div class="form-group">
+        <a href="http://airosmaa.users.cs.helsinki.fi/muistilista/luokka/{{luokka.id}}/muokkaaluokkaa" class="btn btn-primary" role="button">Muokkaa</a>
+        <p></p>
+        <form method="post" action="{{base_path}}/luokka/{{luokka.id}}/destroy" class="destroy-form" data-confirm="Oletko varma, että haluat poistaa luokan?">
+            <button type="submit" class="btn btn-danger">Poista</button>
+        </form>
+    </div>
+    {% endblock %}

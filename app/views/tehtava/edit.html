@@ -36,17 +36,15 @@ muokkaa olemassa olevaa tehtävää
     <div class="form-group">
         <label>Prioriteetti </label>
         <select name="prioriteetti">
-            <option value="Erittäin tärkeä">Erittäin tärkeä</option>
-            <option value="Tärkeä">Tärkeä</option>
-            <option value="Ei niin tärkeä">Ei niin tärkeä</option>
+            <option value="Korkea">Korkea</option>
+            <option value="Keski">Keski</option>
+            <option value="Matala">Matala</option>
         </select>
     </div>
 
     <div class="form-group">
         <label>Luokka</label>
         <select class="form-control" name="luokat[]" multiple="">
-            <option value="1">testi1</option>
-            <option value="2">testi2</option>
             {% for luokka in luokat %}
             <option value="{{luokka.id}}">{{luokka.nimi}}</option>
             {% endfor %}
@@ -59,9 +57,14 @@ muokkaa olemassa olevaa tehtävää
     </div>
 
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Tallenna</button>
+        <input class="btn btn-primary" type="submit" name='save' value="Tallenna tehtävä" />
     </div>
 </form>
+
+<form method="post" action="{{base_path}}/tehtava/{{tehtava.id}}/edit" style="display: inline-block;">
+        <button type="submit" class="btn btn-primary">Tallenna</button>
+    </form>
+<p></p>
 <form method="post" action="{{base_path}}/tehtava/{{tehtava.id}}/destroy" class="destroy-form" data-confirm="Oletko varma, että haluat poistaa luokan?">
     <button type="submit" class="btn btn-danger">Poista</button>
 </form>

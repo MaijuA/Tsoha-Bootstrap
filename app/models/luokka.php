@@ -6,7 +6,7 @@ class Luokka extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validate_nimi');
+        $this->validators = array('validate_nimi', 'validate_kuvaus');
     }
 
     // listaa käyttäjän luokat
@@ -20,7 +20,7 @@ class Luokka extends BaseModel {
                 'id' => $row['id'],
                 'kayttaja_id' => $row['kayttaja_id'],
                 'nimi' => $row['nimi'],
-                'kuvaus' => $row['kuvaus']          
+                'kuvaus' => $row['kuvaus']
             ));
         }
         return $luokat;
@@ -42,7 +42,7 @@ class Luokka extends BaseModel {
         }
         return null;
     }
-    
+
     // tallenna luokka
     public function save() {
         $query = DB::connection()->prepare('INSERT INTO Luokka (nimi, kayttaja_id, kuvaus) VALUES (:nimi, :kayttaja_id, :kuvaus) RETURNING id');
@@ -62,7 +62,7 @@ class Luokka extends BaseModel {
     }
 
     // poista luokka
-    public function destroy($id) {   
+    public function destroy($id) {
         $query = DB::connection()->prepare('DELETE FROM Luokka WHERE id = :id');
         $query->execute(array('id' => $id));
     }
@@ -76,7 +76,19 @@ class Luokka extends BaseModel {
         if (strlen($this->nimi) < 3) {
             $errors[] = 'Nimen pituuden tulee olla vähintään kolme merkkiä!';
         }
+        if (strlen($this->nimi) > 50) {
+            $errors[] = 'Nimi saa olla korkeintaan 50 merkkiä pitkä!';
+        }
         return $errors;
     }
-}
 
+    // tarkista, ettei luokan kuvaus ole liian pitkä
+    public function validate_kuvaus() {
+        $errors = array();
+        if (strlen($this->kuvaus) > 400) {
+            $errors[] = 'Kuvaus saa olla korkeintaan 400 merkkiä pitkä!';
+        }
+        return $errors;
+    }
+
+}

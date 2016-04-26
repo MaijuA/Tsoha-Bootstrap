@@ -14,6 +14,18 @@ class TehtavaController extends BaseController {
         self::check_logged_in();
         $kayttaja_id = $_SESSION['kayttaja'];
         $tehtavat = Tehtava::all($kayttaja_id);
+        $ylin_tehtavat = Tehtava::all_by_priority("Korkea", $kayttaja_id);
+        $tehtavat[] = $ylin_tehtavat;
+        $keski_tehtavat = Tehtava::all_by_priority("Keski", $kayttaja_id);
+        $tehtavat[] = $keski_tehtavat;
+        $alin_tehtavat = Tehtava::all_by_priority("Matala", $kayttaja_id);
+        $tehtavat[] = $alin_tehtavat;
+//        if(!tehtavat['Korkea'] && !$tehtavat['Keski'] && !$tehtavat['Matala']){
+//            $empty = true;
+//        }else{
+//            $empty = false;
+//        }
+        
         View::make('tehtava/index.html', array('tehtavat' => $tehtavat));
     }
     

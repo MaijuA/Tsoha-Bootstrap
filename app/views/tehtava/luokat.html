@@ -19,7 +19,7 @@ listaa käyttäjän luokat
     <tbody>
         {% for luokka in luokat %}  
         <tr>
-            <td><a href="http://airosmaa.users.cs.helsinki.fi/muistilista/luokankuvaus"></a>{{luokka.nimi}}</td>
+            <th><a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/luokka/{{luokka.id}}">{{luokka.nimi}}</a></th>
             <td>{{luokka.kuvaus}}</td>           
             <th><a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/luokka/{{luokka.id}}/muokkaaluokkaa">Muokkaa</a></th>
         </tr>

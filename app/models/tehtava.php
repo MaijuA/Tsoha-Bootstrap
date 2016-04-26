@@ -12,9 +12,9 @@ class Tehtava extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validate_nimi');
+        $this->validators = array('validate_nimi', 'validate_kuvaus');
     }
-    
+
     // listaa käyttäjän tehtävät
     public static function all($kayttaja_id) {
         $query = DB::connection()->prepare('SELECT * FROM Tehtava WHERE kayttaja_id = :kayttaja_id');
@@ -86,6 +86,38 @@ class Tehtava extends BaseModel {
         if (strlen($this->nimi) < 3) {
             $errors[] = 'Nimen pituuden tulee olla vähintään kolme merkkiä!';
         }
+        if (strlen($this->nimi) > 50) {
+            $errors[] = 'Nimi saa olla korkeintaan 50 merkkiä pitkä!';
+        }
         return $errors;
     }
+
+    // tarkista, että tehtävän kuvaus ei ole liian pitkä
+    public function validate_kuvaus() {
+        $errors = array();
+        if (strlen($this->kuvaus) > 400) {
+            $errors[] = 'Kuvaus saa olla korkeintaan 400 merkkiä pitkä!';
+        }
+        return $errors;
+    }
+
+    // tehtävien järjestäminen prioriteetin mukaan 
+    public static function all_by_priority($prioriteetti, $kayttaja_id) {
+        $query = DB::connection()->prepare('SELECT * FROM Tehtava WHERE kayttaja_id = :kayttaja_id AND prioriteetti = :prioriteetti', array('prioriteetti' => $prioriteetti, 'kayttaja_id' => $kayttaja_id));
+        $rows = $query->fetchAll();
+        $tehtavat = array();
+        foreach ($rows as $row) {
+            $tehtavat[] = new Tehtava(array(
+                'id' => $row['id'],
+                'kayttaja_id' => $row['kayttaja_id'],
+                'prioriteetti' => $row['prioriteetti'],
+                'luokka_id' => $row['luokka_id'],
+                'status' => $row['status'],
+                'nimi' => $row['nimi'],
+                'kuvaus' => $row['kuvaus']
+            ));
+        }
+        return $tehtavat;
+    }
+
 }
