@@ -13,20 +13,13 @@ class TehtavaController extends BaseController {
     public static function index() {
         self::check_logged_in();
         $kayttaja_id = $_SESSION['kayttaja'];
-        $tehtavat = Tehtava::all($kayttaja_id);
-        $ylin_tehtavat = Tehtava::all_by_priority("Korkea", $kayttaja_id);
-        $tehtavat[] = $ylin_tehtavat;
-        $keski_tehtavat = Tehtava::all_by_priority("Keski", $kayttaja_id);
-        $tehtavat[] = $keski_tehtavat;
-        $alin_tehtavat = Tehtava::all_by_priority("Matala", $kayttaja_id);
-        $tehtavat[] = $alin_tehtavat;
-//        if(!tehtavat['Korkea'] && !$tehtavat['Keski'] && !$tehtavat['Matala']){
-//            $empty = true;
-//        }else{
-//            $empty = false;
-//        }
-        
-        View::make('tehtava/index.html', array('tehtavat' => $tehtavat));
+        $tehtavat = Tehtava::allSortedByPriority($kayttaja_id);
+        $tehtavatLuokkineen = array();
+        foreach ($tehtavat as $tehtava) {
+            $luokat = TehtavaLuokka::findByTehtavaId($tehtava->id);
+            $tehtavatLuokkineen[] = array('tehtava' => $tehtava, 'luokat' => $luokat);
+        }
+        View::make('tehtava/index.html', array('tehtavatJaLuokat' => $tehtavatLuokkineen));
     }
     
     // tehtävän lisäyssivu
@@ -50,23 +43,12 @@ class TehtavaController extends BaseController {
             'luokat' => array(),
             'kuvaus' => $params['kuvaus'],
             'prioriteetti' => $params['prioriteetti']
-        );        
-//        if(isset($params['luokat'])) {
-//        foreach ($luokat as $luokka) {
-//     
-//            $attributes['luokat'][] = $luokka;
-//        }
-////        
-//        if(isset($params['luokka'])){
-//            $selected_luokat = $params['luokka'];
-//        }else{
-//            $selected_luokat = null;
-//        }
-//        }        
+        );       
         $tehtava = new Tehtava($attributes);
         $errors = $tehtava->errors();
         if (count($errors) == 0) {
             $tehtava->save();
+            TehtavaLuokka::createConnections($tehtava->id, $luokat);
             Redirect::to('/tehtava/' . $tehtava->id, array('message' => 'Tehtävä on lisätty kirjastoosi!'));
         } else {
             View::make('tehtava/new.html', array('errors' => $errors, 'attributes' => $attributes));

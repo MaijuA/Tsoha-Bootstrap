@@ -25,20 +25,29 @@ listaa käyttäjän tehtävät
         </tr>
     </thead>
     <tbody>
-        {% for tehtava in tehtavat %}
+        {% for tehtavaLuokkineen in tehtavatJaLuokat %}
         <tr>                 
-            <th><a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/tehtava/{{tehtava.id}}">{{tehtava.nimi}}</a></th>                   
-            <td>{{tehtava.prioriteetti}}</td>
-            <td><label class="label label-danger">{{tehtava.status}}</label></td>  
-            <th>{% for luokka in luokat %}<a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/luokka/{{luokka.id}}">{{luokka.nimi}}</a>{% endfor %}</th>          
-            <th><a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/tehtava/{{tehtava.id}}/edit">Muokkaa</a></th>
+            <th><a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/tehtava/{{tehtavaLuokkineen.tehtava.id}}">{{tehtavaLuokkineen.tehtava.nimi}}</a></th>
+            <!--<td>{{tehtava.prioriteetti}}</td>-->
+            <td>
+            {% if tehtavaLuokkineen.tehtava.prioriteetti==2 %}
+            Korkea
+            {% elseif tehtavaLuokkineen.tehtava.prioriteetti==1 %}
+            Normaali
+            {% elseif tehtavaLuokkineen.tehtava.prioriteetti==0 %}
+            Matala
+            {% endif %}
+            </td>
+            <td><label class="label label-danger">{{tehtavaLuokkineen.tehtava.status}}</label></td>  
+            <th>{% for luokka in tehtavaLuokkineen.luokat %}<a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/luokka/{{luokka.id}}">{{luokka.nimi}}</a>{% endfor %}</th>          
+            <th><a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/tehtava/{{tehtavaLuokkineen.tehtava.id}}/edit">Muokkaa</a></th>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 
 
-
+<!--
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -75,7 +84,9 @@ listaa käyttäjän tehtävät
                 {% endfor %}
                 </tbody>
                 </table>
+-->
                 {% if empty %}
+
                 <h4>Ei tulevia tehtäviä!</h4>
                 {% endif %}
 

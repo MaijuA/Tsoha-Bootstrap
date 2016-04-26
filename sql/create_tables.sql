@@ -21,10 +21,10 @@ CREATE TABLE Tehtava(
   status varchar(50),
   luokka_id INTEGER REFERENCES Luokka(id),
   kuvaus varchar(400),
-  prioriteetti varchar(50) 
+  prioriteetti INTEGER 
   );
 
-  CREATE TABLE Liitos(
+  CREATE TABLE TehtavaLuokka(
   tehtava_id INTEGER REFERENCES Tehtava(id) NOT NULL,
   luokka_id INTEGER REFERENCES Luokka(id) NOT NULL,
   PRIMARY KEY (tehtava_id, luokka_id)
