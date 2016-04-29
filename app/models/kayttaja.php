@@ -42,7 +42,6 @@ class Kayttaja extends BaseModel {
             $kayttaja = new Kayttaja(array(
                 'id' => $row['id'],
                 'nimi' => $row['nimi'],
-                'kayttajatyyppi' => $row['kayttajatyyppi'],
                 'kayttajatunnus' => $row['kayttajatunnus'],
                 'salasana' => $row['salasana']
             ));
@@ -114,5 +113,15 @@ class Kayttaja extends BaseModel {
         }
         return null;
     }
+    
+    // tallenna uusi käyttäjä
+    public function save() {
+        $query = DB::connection()->prepare('INSERT INTO Kayttaja (nimi, kayttajatunnus, salasana) VALUES (:nimi, :kayttajatunnus, :salasana');
+        $query->execute(array('nimi' => $this->nimi, 'kayttajatunnus' => $this->kayttajatunnus, 'salasana' => $this->salasana));
+        $row = $query->fetch();
+        $this->id = $row['id'];
+    }
+    
+    
 
 }

@@ -5,6 +5,7 @@
 <!--
 luokan muokkaussivu
 -->
+<!--
 {% if errors %}
 <div class="alert alert-danger">
     <ul>
@@ -14,6 +15,7 @@ luokan muokkaussivu
     </ul>
 </div>
 {% endif %}
+-->
 <form>
     <div class="form-group">
         <label>Nimi</label>
@@ -25,7 +27,6 @@ luokan muokkaussivu
         <textarea class="form-control">{{luokka.kuvaus}}
         </textarea>
     </div>
-
     <div class="form-group">
         <form method="post" action="{{base_path}}/luokka/{{luokka.id}}/destroy" class="destroy-form" data-confirm="Oletko varma, että haluat poistaa luokan?">
             <button type="submit" class="btn btn-danger">Poista</button>

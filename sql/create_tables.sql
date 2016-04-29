@@ -1,7 +1,6 @@
 
 CREATE TABLE Kayttaja(
   id SERIAL PRIMARY KEY,
-  kayttajatyyppi varchar(50) NOT NULL,
   nimi varchar(50) NOT NULL,
   kayttajatunnus varchar(50) NOT NULL,
   salasana varchar(50) NOT NULL

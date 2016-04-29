@@ -8,10 +8,19 @@ tehtävän esittelysivu
 {{message}}
 
 <ul>
-    <li><strong>Prioriteetti:</strong>{{tehtava.prioriteetti}}</li>
-    <li><strong>Status:</strong>{{tehtava.status}}</li>
-    <li><strong>Luokka:</strong>{{tehtava.luokka_id}}</li>
+    <li><strong>Prioriteetti: </strong>
+        {% if tehtavaLuokkineen.tehtava.prioriteetti==2 %}
+        Korkea
+        {% elseif tehtavaLuokkineen.tehtava.prioriteetti==1 %}
+        Normaali
+        {% elseif tehtavaLuokkineen.tehtava.prioriteetti==0 %}
+        Matala
+        {% endif %}</li>
+    <li><strong>Status: </strong>{{tehtava.status}}</li>
+    <li><strong>Luokat: </strong>{% for luokka in tehtavaLuokkineen.luokat %}{{luokka.nimi}}{% endfor %}</li>
+    <li><strong>Kuvaus: </strong>{{tehtava.kuvaus}}</li>
 </ul>
+
 <p>
 </p>
 <p>

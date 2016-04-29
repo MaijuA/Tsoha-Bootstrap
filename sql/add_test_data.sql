@@ -1,7 +1,7 @@
 -- Lisää INSERT INTO lauseet tähän tiedostoon
-INSERT INTO Kayttaja (nimi, kayttajatyyppi, kayttajatunnus, salasana) VALUES ('Kalle', 'Kayttaja', 'Kalle123', '***');
-INSERT INTO Kayttaja (nimi, kayttajatyyppi, kayttajatunnus, salasana) VALUES ('Pekka', 'Yllapitaja', 'Pekka123', '****');
-INSERT INTO Kayttaja (nimi, kayttajatyyppi, kayttajatunnus, salasana) VALUES ('testi', 'Kayttaja', 'testi', 'testi');
+INSERT INTO Kayttaja (nimi, kayttajatunnus, salasana) VALUES ('Kalle', 'Kalle123', '***');
+INSERT INTO Kayttaja (nimi, kayttajatunnus, salasana) VALUES ('Pekka', 'Pekka123', '****');
+INSERT INTO Kayttaja (nimi, kayttajatunnus, salasana) VALUES ('testi', 'testi', 'testi');
 INSERT INTO Luokka(nimi) VALUES ('Kotityöt');
 INSERT INTO Luokka(nimi) VALUES ('Työt');
 INSERT INTO Luokka(nimi) VALUES ('Opiskelu');

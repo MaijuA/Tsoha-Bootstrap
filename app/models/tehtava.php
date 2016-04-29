@@ -35,6 +35,7 @@ class Tehtava extends BaseModel {
         return $tehtavat;
     }
 
+    // käyttäjän tehtävät prioriteettijärjestyksessä
     public static function allSortedByPriority($kayttaja_id) {
         $query = DB::connection()->prepare('SELECT * FROM Tehtava WHERE kayttaja_id = :kayttaja_id ORDER BY prioriteetti DESC');
         $query->execute(array('kayttaja_id' => $kayttaja_id));
@@ -87,15 +88,20 @@ class Tehtava extends BaseModel {
         $query = DB::connection()->prepare('UPDATE Tehtava SET (nimi = :nimi, kayttaja_id = :kayttaja_id, luokka_id = :luokka_id, status = :status, prioriteetti = :prioriteetti, kuvaus = :kuvaus)');
         $query->execute(array('nimi' => $this->nimi, 'prioriteetti' => $this->prioriteetti, 'status' => $this->status, 'luokka_id' => $this->luokka_id, 'kayttaja_id' => $this->kayttaja_id, 'kuvaus' => $this->kuvaus));
         $row = $query->fetch();
-        Kint::dump($row);
     }
 
     // poista tehtävä
     public function destroy($id) {
+        self::disconnect_luokat($id);
         $query = DB::connection()->prepare('DELETE FROM Tehtava WHERE id = :id');
         $query->execute(array('id' => $id));
     }
-
+    
+    public static function disconnect_luokat($tehtava_id){
+        DB::connection()->prepare('DELETE FROM TehtavaLuokka
+            WHERE tehtava_id = :id', array('id' => $tehtava_id));
+    }
+    
     // tarkista, että tehtävän nimi on oikeassa muodossa
     public function validate_nimi() {
         $errors = array();
@@ -119,24 +125,4 @@ class Tehtava extends BaseModel {
         }
         return $errors;
     }
-
-    // tehtävien järjestäminen prioriteetin mukaan 
-    public static function all_by_priority($prioriteetti, $kayttaja_id) {
-        $query = DB::connection()->prepare('SELECT * FROM Tehtava WHERE kayttaja_id = :kayttaja_id AND prioriteetti = :prioriteetti', array('prioriteetti' => $prioriteetti, 'kayttaja_id' => $kayttaja_id));
-        $rows = $query->fetchAll();
-        $tehtavat = array();
-        foreach ($rows as $row) {
-            $tehtavat[] = new Tehtava(array(
-                'id' => $row['id'],
-                'kayttaja_id' => $row['kayttaja_id'],
-                'prioriteetti' => $row['prioriteetti'],
-                'luokka_id' => $row['luokka_id'],
-                'status' => $row['status'],
-                'nimi' => $row['nimi'],
-                'kuvaus' => $row['kuvaus']
-            ));
-        }
-        return $tehtavat;
-    }
-
 }
