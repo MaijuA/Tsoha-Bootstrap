@@ -32,8 +32,6 @@ class TehtavaLuokka extends BaseModel {
         return $luokat;
     }
 
-
-    // listaa käyttäjän tehtävät
     public function save() {
         $query = DB::connection()->prepare('INSERT INTO TehtavaLuokka (tehtava_id, luokka_id)'
                 . ' VALUES (:tehtava_id, :luokka_id)');
@@ -46,7 +44,7 @@ class TehtavaLuokka extends BaseModel {
             return;
         foreach ($luokat as $luokka) {
             $tehtavaluokka = new TehtavaLuokka(array(
-                'luokka_id' => $luokka['id'],
+                'luokka_id' => $luokka,
                 'tehtava_id' => $tehtava_id
             ));
             $tehtavaluokka->save();

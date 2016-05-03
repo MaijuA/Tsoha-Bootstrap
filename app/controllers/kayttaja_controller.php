@@ -19,6 +19,7 @@ class KayttajaController extends BaseController {
         $params = $_POST;
         $kayttaja = Kayttaja::authenticate($params['kayttajatunnus'], $params['salasana']);
         if (!$kayttaja) {
+            Redirect::to('/kirjaudu', array('message' => 'Väärä käyttäjätunnus tai salasana!'));
             View::make('tehtava/kirjaudu.html', array('error' => 'Väärä käyttäjätunnus tai salasana!', 'kayttajatunnus' => $params['kayttajatunnus']));
         } else {
             $_SESSION['kayttaja'] = $kayttaja->id;
@@ -27,31 +28,18 @@ class KayttajaController extends BaseController {
     }
 
     // rekisteröitymissivu
-    public static function create() {
+    public static function rekisteroidy() {
         View::make('tehtava/rekisteroidy.html');
     }
 
     // lisää käyttäjä
-    public static function rekisteroidy() {
+    public static function uusiKayttaja() {
         $params = $_POST;
-//        $salasana = $params['salasana'];
-//        $salasana2 = $params['salasana2'];
-        $attributes = array(
-            'nimi' => $params['nimi'],
-            'kayttajatunnus' => $params['kayttajatunnus'],
-            'salasana' => $params['salasana']
-        );
-        $kayttaja = new Kayttaja($attributes);
-//        if ($password1 != $password2) {
-//            View::make('tehtava/rekisteroidy.html', array('error' => 'Salasanat eivät täsmää keskenään!', 'kayttajatunnus' => $params['kayttajatunnus']));
-//            self::render_view('tehtava/rekisteroidy.html', array('errors' => array('Salasanat eivät täsmää!'), 'kayttaja' => $kayttaja));
-//        }
-        $errors = $kayttaja->errors();
-        if (count($errors) == 0) {
-            $kayttaja->save();
-            Redirect::to('/tehtava/kirjaudu' . $kayttaja->id, array('message' => 'Rekisteröityminen onnistui, voit nyt kirjautua sisään!'));
+        $errors = Kayttaja::uusiKayttaja($params['nimi'], $params['kayttajatunnus'], $params['salasana']);
+        if ($errors) {
+            View::make('tehtava/rekisteroidy.html', array('errors' => $errors));
         } else {
-            View::make('tehtava/rekisteroidy.html', array('errors' => $errors, 'attributes' => $attributes));
+            Redirect::to('/kirjaudu', array('message' => 'Rekisteröityminen onnistui, voit nyt kirjautua sisään!'));
         }
     }
 

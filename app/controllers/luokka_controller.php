@@ -20,7 +20,6 @@ class LuokkaController extends BaseController {
     // lisää luokka
     public static function store() {
         $params = $_POST;
-        Kint::dump($_SESSION['kayttaja']);
         $kayttaja_id = $_SESSION['kayttaja'];
         $attributes = array(
             'nimi' => $params['nimi'],          
@@ -60,8 +59,10 @@ class LuokkaController extends BaseController {
     // muokkaa luokkaa
     public static function update($id) {
         $params = $_POST;
+        $kayttaja_id = $_SESSION['kayttaja'];
         $attributes = array(
             'id' => $id,
+            'kayttaja_id' => $kayttaja_id, 
             'nimi' => $params['nimi'],           
             'kuvaus' => $params['kuvaus']
         );
@@ -70,8 +71,8 @@ class LuokkaController extends BaseController {
        if (count($errors) > 0) {
             View::make('tehtava/muokkaaluokkaa.html', array('errors' => $errors, 'attributes' => $attributes));
         } else {
-            $luokka->update();
-            Redirect::to('/luokka' . $luokka->id, array('message' => 'Luokkaa on muokattu onnistuneesti!'));
+            $luokka->update($id);
+            Redirect::to('/luokka/' . $luokka->id, array('message' => 'Luokkaa on muokattu onnistuneesti!'));
         }
     }
 

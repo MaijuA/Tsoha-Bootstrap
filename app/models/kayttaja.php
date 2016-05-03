@@ -12,7 +12,7 @@ class Kayttaja extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validate_kayttajatyyppi', 'validate_nimi', 'validate_kayttajatunnus', 'validate_salasana');
+        $this->validators = array('validate_nimi', 'validate_kayttajatunnus', 'validate_salasana');
     }
 
     // listaa käyttäjät (ei tarvetta)
@@ -100,7 +100,6 @@ class Kayttaja extends BaseModel {
         $query = DB::connection()->prepare('SELECT * FROM Kayttaja WHERE kayttajatunnus = :kayttajatunnus and salasana = :salasana LIMIT 1');
         $query->execute(array('kayttajatunnus' => $kayttajatunnus, 'salasana' => $salasana));
         $row = $query->fetch();
-        Kint::dump($row);
         if ($row) {
             $kayttaja = new Kayttaja(array(
                 'id' => $row['id'],
@@ -108,20 +107,35 @@ class Kayttaja extends BaseModel {
                 'kayttajatunnus' => $row['kayttajatunnus'],
                 'salasana' => $row['salasana']
             ));
-            // Kint::dump($kayttaja);
             return $kayttaja;
         }
         return null;
     }
     
     // tallenna uusi käyttäjä
-    public function save() {
-        $query = DB::connection()->prepare('INSERT INTO Kayttaja (nimi, kayttajatunnus, salasana) VALUES (:nimi, :kayttajatunnus, :salasana');
-        $query->execute(array('nimi' => $this->nimi, 'kayttajatunnus' => $this->kayttajatunnus, 'salasana' => $this->salasana));
+    public function uusiKayttaja($nimi, $kayttajatunnus, $salasana) {
+        $query = DB::connection()->prepare('SELECT * FROM Kayttaja WHERE kayttajatunnus = :kayttajatunnus');
+        $query->execute(array('kayttajatunnus' => $kayttajatunnus));
         $row = $query->fetch();
-        $this->id = $row['id'];
+        $errors = array();
+        if ($row) {
+            $errors[] = "Käyttäjätunnus on jo käytössä!";
+        }
+        if (strlen($nimi) < 5 || strlen($salasana) > 50) {
+            $errors[] = "Nimen on oltava 5-50 merkkiä pitkä!";
+        }
+        if (strlen($kayttajatunnus) < 5 || strlen($salasana) > 50) {
+            $errors[] = "Käyttäjätunnuksen on oltava 5-50 merkkiä pitkä!";
+        }
+        if (strlen($salasana) < 5 || strlen($salasana) > 50) {
+            $errors[] = "Salasanan on oltava 5-50 merkkiä pitkä!";
+        }
+        if ($errors) {
+            return $errors;
+        } else {
+            $query = DB::connection()->prepare('INSERT INTO Kayttaja (nimi, kayttajatunnus, salasana) VALUES (:nimi, :kayttajatunnus, :salasana)');
+            $query->execute(array('nimi' => $nimi, 'kayttajatunnus' => $kayttajatunnus, 'salasana' => $salasana));
+        }
     }
-    
-    
-
 }
+

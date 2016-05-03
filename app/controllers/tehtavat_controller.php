@@ -21,7 +21,7 @@ class TehtavaController extends BaseController {
         }
         View::make('tehtava/index.html', array('tehtavatJaLuokat' => $tehtavatLuokkineen));
     }
-    
+
     // tehtävän lisäyssivu
     public static function create() {
         self::check_logged_in();
@@ -33,9 +33,7 @@ class TehtavaController extends BaseController {
     // lisää tehtävä
     public static function store() {
         $params = $_POST;
-        Kint::dump($_SESSION['kayttaja']);
         $kayttaja_id = $_SESSION['kayttaja'];
-        $luokat = $params['luokat'];        
         $attributes = array(
             'nimi' => $params['nimi'],
             'status' => $params['status'],
@@ -43,52 +41,91 @@ class TehtavaController extends BaseController {
             'luokat' => array(),
             'kuvaus' => $params['kuvaus'],
             'prioriteetti' => $params['prioriteetti']
-        );       
+        );
+        if (isset($params['luokat'])) {
+            $luokat = $params['luokat'];
+            $kaikkiluokat = array();
+            foreach ($luokat as $id) {
+                $kaikkiluokat[] = new Luokka(array(
+                    'id' => $id
+                ));
+            }
+
+            $attributes['luokat'] = $kaikkiluokat;
+        } else {
+            $kaikkiluokat[] = null;
+        }
+
         $tehtava = new Tehtava($attributes);
         $errors = $tehtava->errors();
         if (count($errors) == 0) {
             $tehtava->save();
-            TehtavaLuokka::createConnections($tehtava->id, $luokat);
-            Redirect::to('/tehtava/' . $tehtava->id, array('message' => 'Tehtävä on lisätty kirjastoosi!'));
+            if (isset($params['luokat'])) {
+                TehtavaLuokka::createConnections($tehtava->id, $luokat);
+            }
+            Redirect::to('/tehtava/' . $tehtava->id, array('message' => 'Tehtävä on lisätty listaasi!'));
         } else {
-            View::make('tehtava/new.html', array('errors' => $errors, 'attributes' => $attributes));
+            $luokat = Luokka::all($kayttaja_id);
+            View::make('tehtava/new.html', array('luokat' => $luokat, 'errors' => $errors, 'attributes' => $attributes));
         }
+    }
+
+    // näytä tehtävä
+    public static function show($id) {
+        self::check_logged_in();
+        $tehtava = Tehtava::find($id);
+        $luokka = Luokka::find($tehtava->luokka_id);
+        $luokat = TehtavaLuokka::findByTehtavaId($tehtava->id);
+        $tehtavatLuokkineen[] = array('tehtava' => $tehtava, 'luokat' => $luokat);
+        View::make('tehtava/tehtava.html', array('tehtava' => $tehtava, 'luokka' => $luokka, 'tehtavatJaLuokat' => $tehtavatLuokkineen));
     }
 
     // tehtävän muokkaussivu
     public static function edit($id) {
         self::check_logged_in();
         $tehtava = Tehtava::find($id);
-        View::make('tehtava/edit.html', array('tehtava' => $tehtava));
-    }
-    
-    // näytä tehtävä
-    public static function show($id) {
-        self::check_logged_in();
-        $tehtava = Tehtava::find($id);
-        $luokka = Luokka::find($tehtava->luokka_id);
-        View::make('tehtava/tehtava.html', array('tehtava' => $tehtava, 'luokka' => $luokka));
+        $kayttaja_id = $_SESSION['kayttaja'];
+        $luokat = Luokka::all($kayttaja_id);       
+        $tehtavanluokat = TehtavaLuokka::findByTehtavaId($tehtava->id);       
+        View::make('tehtava/edit.html', array('tehtava' => $tehtava, 'luokat' => $luokat, 'tehtavanluokat' => $tehtavanluokat));
     }
 
     // muokkaa tehtävää
     public static function update($id) {
         $params = $_POST;
+        $kayttaja_id = $_SESSION['kayttaja'];
         $attributes = array(
             'id' => $id,
             'nimi' => $params['nimi'],
             'status' => $params['status'],
-            'luokka_id' => $luokka_id,
+            'luokat' => array(),
             'kayttaja_id' => $kayttaja_id,
             'kuvaus' => $params['kuvaus'],
             'prioriteetti' => $params['prioriteetti']
         );
+        if (isset($params['luokat'])) {
+            $luokat = $params['luokat'];
+            $tehtavanluokat = array();
+            foreach ($luokat as $id) {
+                $tehtavanluokat[] = new Luokka(array(
+                    'id' => $id
+                ));
+            }
+            $attributes['luokat'] = $tehtavanluokat;
+        } else {
+            $tehtavanluokat[] = null;
+        }
         $tehtava = new Tehtava($attributes);
         $errors = $tehtava->errors();
         if (count($errors) > 0) {
             View::make('tehtava/edit.html', array('errors' => $errors, 'attributes' => $attributes));
         } else {
-            $tehtava->update();
-            Redirect::to('/tehtava' . $tehtava->id, array('message' => 'Tehtävää on muokattu onnistuneesti!'));
+            
+            $tehtava->update($id); 
+            if (isset($params['luokat'])) {
+                TehtavaLuokka::createConnections($tehtava->id, $luokat);
+            }
+            Redirect::to('/tehtava/' . $tehtava->id, array('message' => 'Tehtävää on muokattu onnistuneesti!'));
         }
     }
 
@@ -97,5 +134,6 @@ class TehtavaController extends BaseController {
         $tehtava = new Tehtava(array('id' => $id));
         $tehtava->destroy($id);
         Redirect::to('/index', array('message' => 'Tehtävä on poistettu onnistuneesti!'));
-    }    
+    }
+
 }

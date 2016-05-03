@@ -30,15 +30,21 @@ listaa käyttäjän tehtävät
             <th><a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/tehtava/{{tehtavaLuokkineen.tehtava.id}}">{{tehtavaLuokkineen.tehtava.nimi}}</a></th>
             <!--<td>{{tehtava.prioriteetti}}</td>-->
             <td>
-            {% if tehtavaLuokkineen.tehtava.prioriteetti==2 %}
-            Korkea
-            {% elseif tehtavaLuokkineen.tehtava.prioriteetti==1 %}
-            Normaali
-            {% elseif tehtavaLuokkineen.tehtava.prioriteetti==0 %}
-            Matala
-            {% endif %}
+                {% if tehtavaLuokkineen.tehtava.prioriteetti==2 %}
+                Korkea
+                {% elseif tehtavaLuokkineen.tehtava.prioriteetti==1 %}
+                Normaali
+                {% elseif tehtavaLuokkineen.tehtava.prioriteetti==0 %}
+                Matala
+                {% endif %}
             </td>
-            <td><label class="label label-danger">{{tehtavaLuokkineen.tehtava.status}}</label></td>  
+            <td>
+                {% if tehtavaLuokkineen.tehtava.status=="Kesken" %}
+                <label class="label label-danger">{{tehtavaLuokkineen.tehtava.status}}</label>
+                {% elseif tehtavaLuokkineen.tehtava.status=="Tehty" %}
+                <label class="label label-success">{{tehtavaLuokkineen.tehtava.status}}</label>
+                {% endif %}
+            </td>  
             <th>{% for luokka in tehtavaLuokkineen.luokat %}<a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/luokka/{{luokka.id}}">{{luokka.nimi}}</a>{% endfor %}</th>          
             <th><a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/tehtava/{{tehtavaLuokkineen.tehtava.id}}/edit">Muokkaa</a></th>
         </tr>

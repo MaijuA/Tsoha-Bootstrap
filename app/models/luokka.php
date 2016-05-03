@@ -48,21 +48,20 @@ class Luokka extends BaseModel {
         $query = DB::connection()->prepare('INSERT INTO Luokka (nimi, kayttaja_id, kuvaus) VALUES (:nimi, :kayttaja_id, :kuvaus) RETURNING id');
         $query->execute(array('nimi' => $this->nimi, 'kayttaja_id' => $this->kayttaja_id, 'kuvaus' => $this->kuvaus));
         $row = $query->fetch();
-//        Kint::trace();
-//        Kint::dump($row);
         $this->id = $row['id'];
     }
 
     // muokkaa luokkaa
-    public function update($id, $attributes) {
-        $query = DB::connection()->prepare('UPDATE Luokka SET (nimi = :nimi, kayttaja_id = :kayttaja_id, kuvaus = :kuvaus)');
-        $query->execute(array('nimi' => $this->nimi, 'kayttaja_id' => $this->kayttaja_id, 'kuvaus' => $this->kuvaus));
+    public function update($id) {
+        $query = DB::connection()->prepare('UPDATE Luokka SET (nimi, kayttaja_id, kuvaus) = (:nimi, :kayttaja_id, :kuvaus) WHERE id=:id');
+        $query->execute(array('id'=>$id, 'nimi' => $this->nimi, 'kayttaja_id' => $this->kayttaja_id, 'kuvaus' => $this->kuvaus));
         $row = $query->fetch();
-        Kint::dump($row);
     }
 
     // poista luokka
     public function destroy($id) {
+        $destroyconnections = DB::connection()->prepare('DELETE FROM TehtavaLuokka WHERE luokka_id = :luokka_id');
+        $destroyconnections->execute(array('luokka_id' => $this->id));
         $query = DB::connection()->prepare('DELETE FROM Luokka WHERE id = :id');
         $query->execute(array('id' => $id));
     }

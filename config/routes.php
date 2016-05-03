@@ -27,10 +27,10 @@ $routes->get('/kuvaus/:id', function() {
 $routes->get('/luokankuvaus', function() {
     HelloWorldController::luokanKuvaus();
 });
-
-$routes->get('/muokkaaluokkaa', function() {
-    HelloWorldController::muokkaaLuokkaa();
-});
+//
+//$routes->get('/muokkaaluokkaa', function() {
+//    HelloWorldController::muokkaaLuokkaa();
+//});
 
 $routes->get('/luokat', function() {
     LuokkaController::luokat();
@@ -111,8 +111,8 @@ $routes->get('/rekisteroidy', function() {
     KayttajaController::rekisteroidy();
 });
 
-$routes->get('/rekisteroidy', function() {
-    KayttajaController::create();
+$routes->post('/rekisteroidy', function() {
+    KayttajaController::uusiKayttaja();
 });
 
 
