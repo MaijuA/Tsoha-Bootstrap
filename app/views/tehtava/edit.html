@@ -20,55 +20,67 @@ muokkaa olemassa olevaa tehtävää
 {% endif %}
 
 <form method="post" action="{{base_path}}/tehtava/{{tehtava.id}}/edit">
+
     <div class="form-group">
-        <label>Nimi</label>
+        <label class="control-label">Nimi</label>
         <input name="nimi" class="form-control" type="text" value="{{tehtava.nimi}}">
     </div>
 
-    <div class="form-group">
-        <label>Status </label>
-        <select name="status">
-            <option value="Kesken">Kesken</option>
-            <option value="Tehty">Tehty</option>                   
-        </select>
+    <label>Status</label>
+    <div class="form-group radio">
+        <label class="radio-inline"><input type="radio" name="status" value="Kesken" {% if tehtava.status == "Kesken" %}checked{% endif %}>Kesken</label>
+        <label class="radio-inline"><input type="radio" name="status" value="Tehty" {% if tehtava.status == "Tehty" %}checked{% endif %}>Tehty</label>
     </div>
 
-    <div class="form-group">
-        <label>Prioriteetti</label>
-        <select name="prioriteetti">
-            <option value=2>Korkea</option>
-            <option value=1>Normaali</option>
-            <option value=0>Matala</option>
-        </select>
+    <label>Prioriteetti</label>
+    <div class="form-group radio">
+        <label class="radio-inline"><input type="radio" name="prioriteetti" value="2" {% if tehtava.prioriteetti == 2 %}checked{% endif %}>Korkea</label>
+        <label class="radio-inline"><input type="radio" name="prioriteetti" value="1" {% if tehtava.prioriteetti == 1 %}checked{% endif %}>Normaali</label>
+        <label class="radio-inline"><input type="radio" name="prioriteetti" value="0" {% if tehtava.prioriteetti == 0 %}checked{% endif %}>Matala</label>
     </div>
+
 
     <div class="form-group">
         <label>Luokka</label>
-        <p>(pidä ctrl/cmd pohjassa valitaksesi useamman luokan)</p>
         <select class="form-control" name="luokat[]" multiple="">
             {% for luokka in luokat %}
-            <option value="{{luokka.id}}">{{luokka.nimi}}</option>
+            <option value="{{ luokka.id }}">{{ luokka.nimi }}</option>
             {% endfor %}
         </select>
+        <p class="small">(pidä ctrl/cmd pohjassa valitaksesi useamman luokan)</p>
     </div>
     <!--
+     <label>Luokat</label>
      <div class="form-group">
-        <label class="control-label">Luokat</label>
-        <br>
-        {% for luokka in luokat %}
-        {% if luokka in tehtavanluokat %}
-        <input type="checkbox" checked="checked" name="luokat[]" value="{{luokka.id}}">{{luokka.nimi}}</input>
-        <br>
-        {% else %}
-        <input type="checkbox" name="luokat[]" value="{{luokka.id}}">{{luokka.nimi}}</input>
-        <br>
-        {% endif %}
-        {% endfor %}
-    </div>
+         <select class="form-control" name="luokat[]" multiple>
+             {% for luokka in luokat %}
+             <option value="{{ luokka.id }}" {% if luokka.id in tehtavaLuokkineen.luokat %}selected{% endif %}>{{ luokka.nimi }}</option>
+             {% endfor %}
+         </select>
+         <p class="small">(pidä ctrl/cmd pohjassa valitaksesi useamman luokan)</p>
+     </div>
+ 
+ 
+     <div class="form-group">
+         <label class="control-label">Luokat</label>
+         <br>
+         {% for luokka in luokat %}
+         {% if luokka in tehtavatLuokkineen.luokat %}
+         <input type="checkbox" checked="checked" name="luokat[]" value="{{luokka.id}}">{{luokka.nimi}}</input>
+         <br>
+         {% else %}
+          <input type="checkbox" name="luokat[]" value="{{luokka.id}}">{{luokka.nimi}}</input>
+         <br>
+         {% endif %}
+         {% endfor %}
+     </div>
+ 
     -->
     <div class="form-group">
-        <label>Kuvaus</label>
+        <label class="control-label">Kuvaus</label>
         <textarea name="kuvaus" class="form-control">{{tehtava.kuvaus}}</textarea>
+    </div>
+    <div class="form-group">
     </div>
     <button type="submit" class="btn btn-primary">Tallenna</button>
 </form>

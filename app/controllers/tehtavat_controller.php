@@ -85,8 +85,8 @@ class TehtavaController extends BaseController {
         self::check_logged_in();
         $tehtava = Tehtava::find($id);
         $kayttaja_id = $_SESSION['kayttaja'];
-        $luokat = Luokka::all($kayttaja_id);       
-        $tehtavanluokat = TehtavaLuokka::findByTehtavaId($tehtava->id);       
+        $luokat = Luokka::all($kayttaja_id);
+        $tehtavanluokat = TehtavaLuokka::findByTehtavaId($tehtava->id);
         View::make('tehtava/edit.html', array('tehtava' => $tehtava, 'luokat' => $luokat, 'tehtavanluokat' => $tehtavanluokat));
     }
 
@@ -118,9 +118,9 @@ class TehtavaController extends BaseController {
         $tehtava = new Tehtava($attributes);
         $errors = $tehtava->errors();
         if (count($errors) > 0) {
-            View::make('tehtava/edit.html', array('errors' => $errors, 'attributes' => $attributes));
-        } else {
-            
+            $luokat = Luokka::all($kayttaja_id);
+            View::make('tehtava/edit.html', array('errors' => $errors, 'tehtava' => $tehtava, 'luokat' => $luokat, 'attributes' => $attributes));
+        } else {   
             $tehtava->update($id); 
             if (isset($params['luokat'])) {
                 TehtavaLuokka::createConnections($tehtava->id, $luokat);
@@ -128,7 +128,6 @@ class TehtavaController extends BaseController {
             Redirect::to('/tehtava/' . $tehtava->id, array('message' => 'Tehtävää on muokattu onnistuneesti!'));
         }
     }
-
     // poista tehtävä
     public static function destroy($id) {
         $tehtava = new Tehtava(array('id' => $id));

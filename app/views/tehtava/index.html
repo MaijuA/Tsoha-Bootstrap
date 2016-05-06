@@ -43,8 +43,6 @@ listaa käyttäjän tehtävät
                 <label class="label label-danger">{{tehtavaLuokkineen.tehtava.status}}</label>
                 {% elseif tehtavaLuokkineen.tehtava.status=="Tehty" %}
                 <label class="label label-success">{{tehtavaLuokkineen.tehtava.status}}</label>
-                {% elseif tehtavaLuokkineen.tehtava.status=="kesken" %}
-                <label class="label label-danger">Kesken</label>
                 {% endif %}
             </td>  
             <th>{% for luokka in tehtavaLuokkineen.luokat %}<a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/luokka/{{luokka.id}}">{{luokka.nimi}}</a>{% endfor %}</th>          

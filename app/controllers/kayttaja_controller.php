@@ -5,7 +5,7 @@ class KayttajaController extends BaseController {
 
     // kirjautumissivu
     public static function login() {
-        View::make('tehtava/kirjaudu.html');
+        View::make('kayttaja/kirjaudu.html');
     }
 
     // kirjaudu ulos
@@ -29,7 +29,7 @@ class KayttajaController extends BaseController {
 
     // rekisteröitymissivu
     public static function rekisteroidy() {
-        View::make('tehtava/rekisteroidy.html');
+        View::make('kayttaja/rekisteroidy.html');
     }
 
     // lisää käyttäjä
@@ -37,7 +37,7 @@ class KayttajaController extends BaseController {
         $params = $_POST;
         $errors = Kayttaja::uusiKayttaja($params['nimi'], $params['kayttajatunnus'], $params['salasana']);
         if ($errors) {
-            View::make('tehtava/rekisteroidy.html', array('errors' => $errors));
+            View::make('kayttaja/rekisteroidy.html', array('errors' => $errors));
         } else {
             Redirect::to('/kirjaudu', array('message' => 'Rekisteröityminen onnistui, voit nyt kirjautua sisään!'));
         }
